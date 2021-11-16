@@ -1,6 +1,11 @@
+import Header from './components/Header'
+import LandingPageBody from './components/LandingPageBody'
+
 function App() {
   return (
     <>
+    <Header isAuthenticated={true}/>
+    <LandingPageBody/>
     <div className="container">
       <div className="card mx-auto" style={{backgroundColor: 'pink', width: '18rem'}}>
         <div className="card-body">
