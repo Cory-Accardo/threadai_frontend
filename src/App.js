@@ -1,12 +1,19 @@
 import Header from './components/Header'
 // import LandingPageBody from './components/LandingPageBody'
 import Form from './components/Form'
+import Input from './components/Input';
+import DropdownInput from './components/DropdownInput';
 
 function App() {
   return (
     <>
     <Header isAuthenticated={true}/>
-    <Form components={["text", "password", "text"]}/>
+    <Form>
+      <Input type="text"/>
+      <Input style={{width: '50px'}} type="text"/>
+      <Input className='m-5'  type="password"/>
+      <DropdownInput options={[{label: 'hi'}, {label: 'bye'}]}/>
+    </Form>
     <div className="container">
       <div className="card mx-auto" style={{backgroundColor: 'pink', width: '18rem'}}>
         <div className="card-body">
