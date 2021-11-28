@@ -1,9 +1,17 @@
-function Input(props) { //prop refers to the input type that html5 will use to validate / improve UI. thus type = "text" or type="password" are examples. All examples will be documented
+import { useState } from "react";
+import Pill from "./Pill";
 
+function Input({makesPill, pillClassName, className, style, type, setInput, mapKey}) { 
+
+  const [pill, setPill] = useState(null)
 
   return (
       <div className="">
-          <input className = {props.className} style={props.style} type={props.type} onChange={(e) => props.setInput("input" + props.mapKey, e.target.value)}/>
+          <input className = {className} style={style} type={type} onChange={(e) => {
+            if(makesPill) setPill(<Pill content={e.target.value} className={pillClassName}/>)
+            setInput(mapKey, e.target.value)
+            }}/>
+          {pill}
       </div>
     );
   }
