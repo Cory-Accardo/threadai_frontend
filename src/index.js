@@ -8,6 +8,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import LandingPage from './pages/LandingPage';
 
 
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<Homepage/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path= "/landing" element={<LandingPage/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
