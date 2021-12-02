@@ -6,6 +6,7 @@ class LandingPage extends Component {
         return(
             <div>
                 <Header isAuthenticated={true}/>
+                
             </div>
         );
     }

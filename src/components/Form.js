@@ -55,8 +55,8 @@ function Form({children, action, method, hasPills}) {
                   method: method,
                   params: formMap
               }).then(res => setResponse(res));
-              console.log(res)}
-              }/>
+            //   console.log(res)}
+              }}/>
 
           {
           hasPills ?
