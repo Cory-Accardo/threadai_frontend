@@ -5,7 +5,7 @@ class LandingPage extends Component {
     render() {
         return(
             <div>
-                <Header isAuthenticated={true}/>
+                <Header isAuthenticated={false}/>
             </div>
         );
     }
