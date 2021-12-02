@@ -1,4 +1,6 @@
+import '../styles/pill.scss';
 
+<<<<<<< HEAD
 function Pill({content, className}) { 
 
 
@@ -34,11 +36,14 @@ function Pill({content, className}) {
 
 
 
+=======
+function Pill({content, className}) {
+>>>>>>> b8c8d4cad7d1b7c4c593e3638427ae070ef9b269
     return (
-      <div className={className} style={{paddingTop: '5px',textAlign: 'center', fontSize: '13px', overflow: 'hidden', height: '35px', width: '100px', border: 'solid 2px black', borderRadius: '20px'}}>
+      <div className={className} style="pill">
           {content}
       </div>
     );
   }
-  
+
   export default Pill;

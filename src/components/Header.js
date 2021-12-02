@@ -1,16 +1,25 @@
 import '../styles/nav.scss';
 import logo from '../styles/logo.png';
+import Pill from '../components/Pill'
 
 function Header({isAuthenticated}) {
     return (
       <div className="navbar">
-          <div className="logo">
-            <img src={logo} height="100vh"></img>
-          </div>
-          <div>
-            {isAuthenticated === true ? <h1>Welcome back!</h1> : <h1>Sign in.</h1>}
-          </div>
+          <img src={logo} height="100%"></img>
+          {
+            isAuthenticated == true ?
+              <div>
+                <h1>
+                  <i> Welcome, </i>
+                  <strong> Bridget</strong>
+                </h1>
+              </div> :
+              <div>
+                text1
+                text2
+              </div>
 
+          }
       </div>
     );
   }
