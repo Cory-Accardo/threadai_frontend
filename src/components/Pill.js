@@ -1,15 +1,14 @@
 import '../styles/pill.scss';
 
-<<<<<<< HEAD
 function Pill({content, className}) { 
 
 
-  <div class="pill-nav">
-  <a class="active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-</div>
+//   <div class="pill-nav">
+//   <a class="active" href="#home">Home</a>
+//   <a href="#news">News</a>
+//   <a href="#contact">Contact</a>
+//   <a href="#about">About</a>
+// </div>
 
 //   /* Style the links inside the pill navigation menu */
 // .pill-nav a {
@@ -36,9 +35,6 @@ function Pill({content, className}) {
 
 
 
-=======
-function Pill({content, className}) {
->>>>>>> b8c8d4cad7d1b7c4c593e3638427ae070ef9b269
     return (
       <div className={className} style="pill">
           {content}

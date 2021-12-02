@@ -55,14 +55,8 @@ function Form({children, action, method, hasPills}) {
                   method: method,
                   params: formMap
               }).then(res => setResponse(res));
-<<<<<<< HEAD
             //   console.log(res)}
               }}/>
-=======
-            //   console.log(res)
-            }
-              }/>
->>>>>>> b8c8d4cad7d1b7c4c593e3638427ae070ef9b269
 
           {
           hasPills ?
