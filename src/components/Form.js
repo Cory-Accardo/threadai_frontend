@@ -8,6 +8,8 @@ function Form({children, action, method, hasPills}) {
 
     const [formMap, setFormMap] = useState({});
 
+    const [response, setResponse] = useState()
+
     const [pills, setPills] = useState(null);
     
     useEffect( () =>{ 
@@ -52,8 +54,8 @@ function Form({children, action, method, hasPills}) {
                   url: action,
                   method: method,
                   params: formMap
-              })
-              console.log(formMap)}
+              }).then(res => setResponse(res));
+              console.log(res)}
               }/>
 
           {
