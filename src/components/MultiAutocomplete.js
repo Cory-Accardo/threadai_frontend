@@ -4,9 +4,7 @@ import { useState } from "react";
 
 // Basically a MultiDropdownInput with a search function: lets the user type in anything
 // they want, but suggests autocomplete results in a dropdown list
-function MultiAutocomplete({id, className, promptText, options, maxInputs, setInputs, currentInputs}){
-
-    console.log('Rendering MultiAutocomplete');
+function MultiAutocomplete({id, className, options, maxInputs, setInputs, currentInputs}) {
 
     const [value, setValue] = useState('');
 
@@ -28,7 +26,6 @@ function MultiAutocomplete({id, className, promptText, options, maxInputs, setIn
         ) : undefined;
 
     function addInput(input) {
-        console.log('Adding input');
         if (currentInputs === undefined) {
             setInputs([input]);
             // Ignore duplicates or excess choices after hitting limit
@@ -39,8 +36,6 @@ function MultiAutocomplete({id, className, promptText, options, maxInputs, setIn
             setInputs(newInputs);
         }
     }
-
-    console.log('Current value: ' + value);
 
     return (
         <div
@@ -56,13 +51,14 @@ function MultiAutocomplete({id, className, promptText, options, maxInputs, setIn
                         {item.label}
                         </div>
                     }
-                    shouldItemRender={(item, value) => item.label.startsWith(value)}
+                    shouldItemRender={(item, value) => item.label.toLowerCase().startsWith(value.toLowerCase())}
                     value={value}
                     onChange={(e) => {
                         setValue(e.target.value);
                     }}
                     onSelect={(val) => {
-                        setValue(val);
+                        // Reset to no input to allow the user to type in again
+                        setValue('');
                         addInput(val);
                     }}/>
                 {pillsList}

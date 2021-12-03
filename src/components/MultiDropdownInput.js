@@ -2,7 +2,7 @@ import Pill from './Pill';
 import { useState } from "react";
 
 // Class to take up to maxInputs (should be > 1) user inputs, selecting from among a dropdown list
-function MultiDropdownInput({id, className, promptText, options, maxInputs, setInputs, currentInputs}){
+function MultiDropdownInput({id, className, promptText, options, maxInputs, setInputs, currentInputs}) {
     // options is an array of strings, which represent the options that can be selected
     // currentInputs is an array of strings representing the current inputs selected; length should be at most maxInputs.
     // The last value of currentInputs is the most recently selected item, the one that should be shown.
@@ -37,10 +37,7 @@ function MultiDropdownInput({id, className, promptText, options, maxInputs, setI
             id={id}
             className = {className}>
                 <select
-                    value={
-                        // If currentInputs is undefined or empty, default to the prompt, otherwise use the last element
-                        currentInputs?.length ? currentInputs[currentInputs.length - 1] : ''
-                    }
+                    value=''
                     onChange={(e) => {
                         if (currentInputs === undefined) {
                             setInputs([e.target.value]);
