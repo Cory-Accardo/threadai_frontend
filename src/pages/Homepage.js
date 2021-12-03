@@ -9,6 +9,7 @@ import Pill from '../components/Pill'
 
 function Homepage() {
   return (
+    // react fragment <> </>
     <>
     <Header isAuthenticated={false}/>
     <Form hasPills={true} action="https://google.com" method='get'>

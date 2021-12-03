@@ -81,4 +81,8 @@ function Form({children, action, method}) {
     );
   }
 
+<<<<<<< HEAD
   export default Form;
+=======
+  export default Form;
+>>>>>>> 3aae71c730026babea94c2e15c157216e77dc773
