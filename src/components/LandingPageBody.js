@@ -11,12 +11,13 @@ const styling = {
   fontFamily: 'Lato',
   fontStyle: 'oblique',
   fontWeight: '600',
-  fontSize: '122px',
+  fontSize: '6vw',
   lineHeight: '146px',
 
    color: '#EC4A4A'
 
 }
+
 
 function LandingPageBody() {
     const words = ['sharpening', 'improving', 'refining', 'revamping', 'advancing', 'bettering', 'polishing', 'developing', 'boosting', 'enhancing', 'strengthening', 'supplementing', 'perfecting'];
@@ -36,27 +37,35 @@ function LandingPageBody() {
 
 
     return (
-    <><div style={{ backgroundColor: '#393939', height: '100%', position: 'absolute', width: '100%' }}></div>
+    <><div style={{ backgroundColor: '#393939', height: '100%', position: 'absolute', width: '100%'}}></div>
     <div style={styling}>
-        <h1>
-            <strong> Start </strong> 
-            <span style= {{color: 'white', fontStyle: 'oblique'}}> 
-            {word} </span>
-           <strong> your resume with</strong>
+        <h1 style={{fontSize:'8vw', fontStyle: 'normal', fontWeight: '700'}}> 
+             start <span style= {{color: '#FFFFFF', fontStyle: 'oblique', fontSize: '9vw', fontWeight: '700'}}> 
+            {word} </span>  
+            <h2 style={{fontSize:'8vw', fontStyle: 'normal', fontWeight: '700'}}> your resume with </h2>
         </h1>
-        <h2 style={{
+        <h3 style={{
           fontSize:'11vw',
           fontFamily: 'Lato',
           fontStyle: 'normal',
-          fontWeight: 'bold',
+          fontWeight: '900',
           color: '#FFFFFF',
           width: '973px',
           height: '500px',
           left: '63px',
           top: '280px'}}>
-          Curriculum Vit<span style={{color: '#EC4A4A'}}>AI </span></h2>
+          Curriculum Vit<span style={{color: '#EC4A4A', fontWeight: '900'}}>AI </span></h3>
+          
+          {/* // image arrow and on click event 
+          for the arrow on side of landing page: WIP??
+          <h3 style={{position: 'absolute', width: '120.42px', 
+          height: '92.95px', left: '1282.2px', top: '479.31px',
+          border: '14px solid #FFFFFF', transform: 'rotate(125deg)'}}> */}
+          
       </div></>
     );
+    
+
   }
 
   export default LandingPageBody;
