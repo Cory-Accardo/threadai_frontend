@@ -39,12 +39,13 @@ function LandingPageBody() {
     <><div style={{ backgroundColor: '#393939', height: '100%', position: 'absolute', width: '100%' }}></div>
     <div style={styling}>
         <h1>
-          <strong> Start </strong>
-           <i> {word}</i> 
+            <strong> Start </strong> 
+            <span style= {{color: 'white', fontStyle: 'oblique'}}> 
+            {word} </span>
            <strong> your resume with</strong>
         </h1>
         <h2 style={{
-          fontSize:'10vw',
+          fontSize:'11vw',
           fontFamily: 'Lato',
           fontStyle: 'normal',
           fontWeight: 'bold',
@@ -53,7 +54,7 @@ function LandingPageBody() {
           height: '500px',
           left: '63px',
           top: '280px'}}>
-          Curriculum VitAI</h2>
+          Curriculum Vit<span style={{color: '#EC4A4A'}}>AI </span></h2>
       </div></>
     );
   }
