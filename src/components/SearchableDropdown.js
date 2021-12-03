@@ -7,7 +7,7 @@ function SearchableDropdown({id, className, options, setInput, currentInput}) {
 
         return <Autocomplete
             id={id}
-            className={className}
+            class={className}
             getItemValue={(item) => item.label}
             items={options.map((option) => {
                 return {label: option}

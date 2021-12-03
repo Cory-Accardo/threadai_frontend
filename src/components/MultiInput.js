@@ -19,14 +19,14 @@ function MultiInput({id, className, promptText, maxInputs, setInputs, currentInp
             <Pill
                 key={label}
                 content={label}
-                className='pill'
+                className={className}
                 onDelete={() => onPillDelete(label)}/>
         ) : undefined;
 
     return (
         <div
             id={id}
-            className = {className}>
+            class={className}>
                 <input
                     defaultValue={
                         // If currentInputs is undefined or empty, default to the prompt, otherwise use the last element

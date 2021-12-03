@@ -16,7 +16,7 @@ function DropdownInput({id, className, options, setInput, currentInput}){
     return (
         <select
             id={id}
-            className = {className}
+            class={className}
             value={currentInput || options[0]}
             onChange={(e) => setInput(e.target.value)}>
                 {optionsList}

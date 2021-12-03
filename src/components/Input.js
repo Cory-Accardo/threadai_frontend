@@ -3,7 +3,7 @@ function Input({id, className, setInput, currentInput}) {
     return (
         <input
             id={id}
-            className={className}
+            class={className}
             onChange={(e) => {
                 setInput(e.target.value)
             }}

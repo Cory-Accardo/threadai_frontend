@@ -28,14 +28,14 @@ function MultiDropdownInput({id, className, promptText, options, maxInputs, setI
             <Pill
                 key={label}
                 content={label}
-                className='pill'
+                className={className}
                 onDelete={() => onPillDelete(label)}/>
         ) : undefined;
 
     return (
         <div
             id={id}
-            className = {className}>
+            class = {className}>
                 <select
                     value=''
                     onChange={(e) => {

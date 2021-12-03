@@ -21,7 +21,7 @@ function MultiAutocomplete({id, className, options, maxInputs, setInputs, curren
             <Pill
                 key={label}
                 content={label}
-                className='pill'
+                className={className}
                 onDelete={() => onPillDelete(label)}/>
         ) : undefined;
 
@@ -40,7 +40,7 @@ function MultiAutocomplete({id, className, options, maxInputs, setInputs, curren
     return (
         <div
             id={id}
-            className={className}>
+            class={className}>
                 <Autocomplete
                     getItemValue={(item) => item.label}
                     items={options.map((option) => {
