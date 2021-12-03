@@ -1,13 +1,14 @@
-
-function Pill({content, className}) { 
-
-
+// Class to display some input that the user has given from an input/dropdown box, along with the option to delete it
+function Pill({content, className, onDelete}) {
 
     return (
-      <div className={className} style={{paddingTop: '5px',textAlign: 'center', fontSize: '13px', overflow: 'hidden', height: '35px', width: '100px', border: 'solid 2px black', borderRadius: '20px'}}>
-          {content}
-      </div>
+        <div className={className}
+            //Style included only so pill is visible, should be deleted once properly styled
+            style={{border: 'solid 2px black'}}>
+                <button onClick={onDelete}/>
+                <p>{content}</p>
+        </div>
     );
-  }
-  
-  export default Pill;
+}
+
+export default Pill;

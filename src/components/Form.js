@@ -1,71 +1,84 @@
 import { useEffect, useState } from 'react';
-import Input  from './Input'
+import Input from './Input';
+import MultiInput from '../components/MultiInput';
 import DropdownInput from './DropdownInput';
+import MultiDropdownInput from './MultiDropdownInput';
+import MultiAutocomplete from './MultiAutocomplete';
 import axios from 'axios';
-import Pill from './Pill';
 
-function Form({children, action, method, hasPills}) {
+function Form({children, action, method}) {
 
-    const [formMap, setFormMap] = useState({});
+    // An array with the relevant state of each child component, in the same order as they appear
+    // When the array is updated, every component will be re-rendered, so there's room for performance improvement
+    // For our purposes, performance should be irrelevant
+    const [formStateArray, setFormStateArray] = useState([]);
 
-    const [response, setResponse] = useState()
-
-    const [pills, setPills] = useState(null);
-    
-    useEffect( () =>{ 
-        const pillInterval = setInterval(() => setPills(Object.entries(formMap).map( ([key, value]) =>{
-            return <Pill content={value}/>
-        })), 50);
-        return () => clearInterval(pillInterval);
-
-    }, []) 
-
-    const setInput = (key, input) => {
-        formMap[key] = input;
-        setFormMap(formMap);
+    const setInput = (index, input) => {
+        console.log('Setting state for element ' + index + ' to ' + input);
+        const newFormState = formStateArray.slice();
+        newFormState[index] = input;
+        setFormStateArray(newFormState);
     }
 
-    if( !(children.every(child => child.type === Input || child.type === DropdownInput))) throw Error("Every item in a form must be an Input item")
-    
+    const childInputs = children?.map((child, index) => {
+        switch (child.type) {
+            case DropdownInput:
+                return <DropdownInput
+                    id={child.props.id}
+                    key={child.props.id}
+                    className={child.props.className}
+                    options={child.props.options}
+                    setInput={(newInput) => setInput(index, newInput)}
+                    currentInput={formStateArray[index]}/>
+                break;
+            case MultiDropdownInput:
+                return <MultiDropdownInput
+                    id={child.props.id}
+                    key={child.props.id}
+                    className={child.props.className}
+                    options={child.props.options}
+                    promptText={child.props.promptText}
+                    maxInputs={child.props.maxInputs}
+                    setInputs={(newInputs) => setInput(index, newInputs)}
+                    currentInputs={formStateArray[index]}/>
+                break;
+            case Input:
+                return <Input
+                    id={child.props.id}
+                    key={child.props.id}
+                    className={child.props.className}
+                    setInput={(newInput) => setInput(index, newInput)}
+                    currentInput={formStateArray[index]}/>
+                break;
+            case MultiInput:
+                return <MultiInput
+                    id={child.props.id}
+                    key={child.props.id}
+                    className={child.props.className}
+                    promptText={child.props.promptText}
+                    maxInputs={child.props.maxInputs}
+                    setInputs={(newInputs) => setInput(index, newInputs)}
+                    currentInputs={formStateArray[index]}/>
+                break;
+            case MultiAutocomplete:
+                return <MultiAutocomplete
+                    id={child.props.id}
+                    key={child.props.id}
+                    className={child.props.className}
+                    options={child.props.options}
+                    promptText={child.props.promptText}
+                    maxInputs={child.props.maxInputs}
+                    setInputs={(newInputs) => setInput(index, newInputs)}
+                    currentInputs={formStateArray[index]}/>
+                break;
+        }
+    });
 
     return (
-      <div className="">
-          {children.map((child, index) => { //will display a list of input boxes in the order passed in the props.
-              return child.type === Input ?
-              <Input 
-              className={child.props.className} 
-              style={child.props.style} 
-              type={child.props.type} 
-              mapKey={child.props.mapKey} 
-              key={index} 
-              setInput={setInput}/>
-              :
-              <DropdownInput
-              className={child.props.className} 
-              style={child.props.style} 
-              options={child.props.options}  
-              mapKey={child.props.mapKey} 
-              key={index} 
-              setInput={setInput} 
-              getInput={formMap}/>
-          })}
-          <button style={{borderRadius:'20px', height: '25px', width: '40px'}} onClick={()=> {
-              axios.request({
-                  url: action,
-                  method: method,
-                  params: formMap
-              }).then(res => setResponse(res));
-              console.log(res)}
-              }/>
-
-          {
-          hasPills ?
-          pills
-          :
-          null
-          }
+      <div>
+          {childInputs}
       </div>
     );
   }
-  
+
   export default Form;

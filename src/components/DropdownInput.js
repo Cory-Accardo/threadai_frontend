@@ -1,32 +1,26 @@
-import Autocomplete from "react-autocomplete";
+import Pill from './Pill';
 import { useState } from "react";
 
-function DropdownInput({className, style, options, setInput, mapKey}){ //accepts options prop, which is an array of objects with a label property. For instance [{label: 'apple'}, {label: 'beans'}]
-    
-    const [value, setValue] = useState("Type in an option");
+// Class to take user input, selecting from among a dropdown list. Basically just simple React wrapper around select
+function DropdownInput({id, className, options, setInput, currentInput}){
+    // options is an array of strings, which represent the options that can be selected
 
+    const optionsList = options?.map((label) =>
+            <option
+                value={label}
+                key={label}>
+                {label}
+            </option>
+        );
 
     return (
-        <div className="">
-            <Autocomplete
+        <select
+            id={id}
             className = {className}
-            style={style}
-            getItemValue={(item) => item.label}
-            items={options}
-            renderItem={(item, isHighlighted) =>
-                <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-                {item.label}
-                </div>
-            }
-            value={value}
-            onChange={(e) => {
-                setValue(e.target.value); //display value only
-                setInput(mapKey, e.target.value)}}
-            onSelect={(val) => {
-                setValue(val); setInput(mapKey, val)
-            }}
-            />
-        </div>
+            value={currentInput || options[0]}
+            onChange={(e) => setInput(e.target.value)}>
+                {optionsList}
+        </select>
     )
 
 }
