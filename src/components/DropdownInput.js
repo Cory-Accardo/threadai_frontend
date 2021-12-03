@@ -1,8 +1,5 @@
-import Pill from './Pill';
-import { useState } from "react";
-
 // Class to take user input, selecting from among a dropdown list. Basically just simple React wrapper around select
-function DropdownInput({id, className, options, setInput, currentInput}){
+function DropdownInput({id, className, promptText, options, setInput, currentInput}){
     // options is an array of strings, which represent the options that can be selected
 
     const optionsList = options?.map((label) =>
@@ -16,9 +13,10 @@ function DropdownInput({id, className, options, setInput, currentInput}){
     return (
         <select
             id={id}
-            class={className}
-            value={currentInput || options[0]}
+            className={className}
+            value={currentInput || ''}
             onChange={(e) => setInput(e.target.value)}>
+                <option hidden disabled value=''>{promptText}</option>
                 {optionsList}
         </select>
     )

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 // Basically a MultiDropdownInput with a search function: lets the user type in anything
 // they want, but suggests autocomplete results in a dropdown list
-function MultiAutocomplete({id, className, options, maxInputs, setInputs, currentInputs}) {
+function MultiAutocomplete({id, className, pillClassName, options, maxInputs, setInputs, currentInputs}) {
 
     const [value, setValue] = useState('');
 
@@ -21,7 +21,7 @@ function MultiAutocomplete({id, className, options, maxInputs, setInputs, curren
             <Pill
                 key={label}
                 content={label}
-                className={className}
+                className={pillClassName}
                 onDelete={() => onPillDelete(label)}/>
         ) : undefined;
 
@@ -40,7 +40,7 @@ function MultiAutocomplete({id, className, options, maxInputs, setInputs, curren
     return (
         <div
             id={id}
-            class={className}>
+            className={className}>
                 <Autocomplete
                     getItemValue={(item) => item.label}
                     items={options.map((option) => {

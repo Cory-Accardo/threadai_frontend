@@ -2,7 +2,7 @@
 function Pill({content, className, onDelete}) {
 
     return (
-        <div class={className+'_pill'}
+        <div className={className}
             //Style included only so pill is visible, should be deleted once properly styled
             style={{border: 'solid 2px black'}}>
                 <button onClick={onDelete}/>

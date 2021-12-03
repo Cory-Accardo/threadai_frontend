@@ -1,8 +1,7 @@
 import Pill from './Pill';
-import { useState } from "react";
 
 // Class to take up to maxInputs (should be > 1) user inputs from a text box
-function MultiInput({id, className, promptText, maxInputs, setInputs, currentInputs}){
+function MultiInput({id, className, pillClassName, promptText, maxInputs, setInputs, currentInputs}){
     // currentInputs is an array of strings representing the current inputs selected; length should be at most maxInputs.
     // The last value of currentInputs is the most recently selected item, the one that should be shown.
 
@@ -19,14 +18,14 @@ function MultiInput({id, className, promptText, maxInputs, setInputs, currentInp
             <Pill
                 key={label}
                 content={label}
-                className={className}
+                className={pillClassName}
                 onDelete={() => onPillDelete(label)}/>
         ) : undefined;
 
     return (
         <div
             id={id}
-            class={className}>
+            className={className}>
                 <input
                     defaultValue={
                         // If currentInputs is undefined or empty, default to the prompt, otherwise use the last element

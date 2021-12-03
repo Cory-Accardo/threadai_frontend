@@ -1,5 +1,4 @@
 import Autocomplete from "react-autocomplete";
-import { useState } from "react";
 
 // Basically a DropdownInput with a search function: lets the user type in anything
 // they want, but suggests autocomplete results in a dropdown list
@@ -7,7 +6,7 @@ function SearchableDropdown({id, className, options, setInput, currentInput}) {
 
         return <Autocomplete
             id={id}
-            class={className}
+            className={className}
             getItemValue={(item) => item.label}
             items={options.map((option) => {
                 return {label: option}
