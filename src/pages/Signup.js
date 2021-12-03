@@ -1,7 +1,6 @@
 import LandingPageBody from '../components/LandingPageBody'
 
-
-function App() {
+function SignupPage() {
   return (
     <>
         <LandingPageBody/>
@@ -9,4 +8,4 @@ function App() {
   );
 }
 
-export default App;
+export default SignupPage;
