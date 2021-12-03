@@ -40,27 +40,33 @@ function MultiAutocomplete({id, className, promptText, options, maxInputs, setIn
         }
     }
 
+    console.log('Current value: ' + value);
+
     return (
-        <Autocomplete
+        <div
             id={id}
-            className={className}
-            getItemValue={(item) => item.label}
-            items={options.map((option) => {
-                return {label: option}
-            })}
-            renderItem={(item, isHighlighted) =>
-                <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-                {item.label}
-                </div>
-            }
-            value={value}
-            onChange={(e) => {
-                setValue(e.target.value);
-            }}
-            onSelect={(val) => {
-                setValue(val);
-                addInput(val);
-            }}/>
+            className={className}>
+                <Autocomplete
+                    getItemValue={(item) => item.label}
+                    items={options.map((option) => {
+                        return {label: option}
+                    })}
+                    renderItem={(item, isHighlighted) =>
+                        <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                        {item.label}
+                        </div>
+                    }
+                    shouldItemRender={(item, value) => item.label.startsWith(value)}
+                    value={value}
+                    onChange={(e) => {
+                        setValue(e.target.value);
+                    }}
+                    onSelect={(val) => {
+                        setValue(val);
+                        addInput(val);
+                    }}/>
+                {pillsList}
+        </div>
     )
 
 }
