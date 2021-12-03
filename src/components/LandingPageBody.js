@@ -1,5 +1,22 @@
 import { useState, useEffect } from 'react';
 
+const styling = {
+
+  position: 'absolute',
+  width: '1000px',
+  height: '1000.3px',
+  left: '63px',
+  top: '280px',
+
+  fontFamily: 'Lato',
+  fontStyle: 'oblique',
+  fontWeight: '600',
+  fontSize: '122px',
+  lineHeight: '146px',
+
+   color: '#EC4A4A'
+
+}
 
 function LandingPageBody() {
     const words = ['sharpening', 'improving', 'refining', 'revamping', 'advancing', 'bettering', 'polishing', 'developing', 'boosting', 'enhancing', 'strengthening', 'supplementing', 'perfecting'];
@@ -19,9 +36,25 @@ function LandingPageBody() {
 
 
     return (
-      <div className="">
-          <h1>Start {word} your resume with CVAI</h1>
-      </div>
+    <><div style={{ backgroundColor: '#393939', height: '100%', position: 'absolute', width: '100%' }}></div>
+    <div style={styling}>
+        <h1>
+          <strong> Start </strong>
+           <i> {word}</i> 
+           <strong> your resume with</strong>
+        </h1>
+        <h2 style={{
+          fontSize:'10vw',
+          fontFamily: 'Lato',
+          fontStyle: 'normal',
+          fontWeight: 'bold',
+          color: '#FFFFFF',
+          width: '973px',
+          height: '500px',
+          left: '63px',
+          top: '280px'}}>
+          Curriculum VitAI</h2>
+      </div></>
     );
   }
 

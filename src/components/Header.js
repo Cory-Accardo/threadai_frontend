@@ -17,7 +17,7 @@ function Header({isAuthenticated}) {
       <div className="navbar">
           <img src={logo} height="100%"></img>
           {
-            isAuthenticated == true ?
+            isAuthenticated === true ?
               <div>
                 <h1>
                   <i> Welcome, </i>
