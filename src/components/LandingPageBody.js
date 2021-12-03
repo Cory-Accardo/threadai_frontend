@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 
+
 function LandingPageBody() {
-
-    const [word, setWord] = useState('Default'); //word, and setWord are getter and setter functions respectively.
     const words = ['sharpening', 'improving', 'refining', 'revamping', 'advancing', 'bettering', 'polishing', 'developing', 'boosting', 'enhancing', 'strengthening', 'supplementing', 'perfecting'];
+    const [word, setWord] = useState(words[0]); //word, and setWord are getter and setter functions respectively.
+    let worderator = words.values();
 
-    const refreshWord = () => setWord(words[Math.floor(Math.random() * 13)]);
+    const refreshWord = () =>{
+      const nextWord = worderator.next();
+      if(nextWord.done) worderator = words.values();
+      setWord(nextWord.value);
+    }
 
     useEffect( () =>{ //This is to prevent memrory leak
         const wordInterval = setInterval(refreshWord, 800);
