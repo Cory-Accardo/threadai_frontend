@@ -9,6 +9,7 @@ import {
   Route
 } from "react-router-dom";
 import LandingPage from './pages/LandingPage';
+import ResumePage from './pages/ResumePage';
 
 
 ReactDOM.render(
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route path="/" element={<Homepage/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path= "/landing" element={<LandingPage/>}/>
+        <Route path= "/resumes" element={<ResumePage/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
