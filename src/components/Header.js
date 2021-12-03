@@ -2,6 +2,16 @@ import '../styles/nav.scss';
 import logo from '../styles/logo.png';
 import Pill from '../components/Pill'
 
+const styling = {
+
+  backgroundColor: 'white',
+  fontSize: '10px',
+  width: '40px',
+  border: '2px solid',
+  borderRadius: '20px'
+
+}
+
 function Header({isAuthenticated}) {
     return (
       <div className="navbar">
@@ -15,9 +25,30 @@ function Header({isAuthenticated}) {
                 </h1>
               </div> :
               <div>
-                text1
-                text2
+              <div>Login</div> 
+              <div>Sign Up</div>
+
               </div>
+
+// ^ css flex container?
+// /* Sign up deets from figma*/
+// position: absolute;
+// width: 137px;
+// height: 70px;
+// left: 1241px;
+// top: 52px;
+
+// font-family: Lato;
+// font-style: normal;
+// font-weight: bold;
+// font-size: 40px;
+// line-height: 48px;
+// display: flex;
+// align-items: center;
+// text-align: center;
+
+// color: #FFFFFF;
+
 
           }
       </div>
