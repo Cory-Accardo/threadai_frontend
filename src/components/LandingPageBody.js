@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const styling = {
 
@@ -30,6 +31,8 @@ function LandingPageBody() {
       setWord(nextWord.value);
     }
 
+    const navigate = useNavigate();
+
     useEffect( () =>{ //This is to prevent memrory leak
         const wordInterval = setInterval(refreshWord, 800);
         return () => clearInterval(wordInterval); //Stops timer when component unmounts. Prevents memory leak
@@ -56,6 +59,9 @@ function LandingPageBody() {
           top: '280px'}}>
           Curriculum Vit<span style={{color: '#EC4A4A', fontWeight: '900'}}>AI </span></h3>
           
+          <button style= {{color: 'blue'}} onClick={() => {
+            navigate('/signup', {replace: true})
+          }}> Insert Arrow Here </button>
           {/* // image arrow and on click event 
           for the arrow on side of landing page: WIP??
           <h3 style={{position: 'absolute', width: '120.42px', 
