@@ -2,7 +2,6 @@ import { useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const styling = {
-
   position: 'absolute',
   width: '1000px',
   height: '1000.3px',
@@ -15,10 +14,8 @@ const styling = {
   fontSize: '6vw',
   lineHeight: '146px',
 
-   color: '#EC4A4A'
-
+  color: '#EC4A4A'
 }
-
 
 function LandingPageBody() {
     const words = ['sharpening', 'improving', 'refining', 'revamping', 'advancing', 'bettering', 'polishing', 'developing', 'boosting', 'enhancing', 'strengthening', 'supplementing', 'perfecting'];
@@ -40,37 +37,42 @@ function LandingPageBody() {
 
 
     return (
-    <><div style={{ backgroundColor: '#393939', height: '100%', position: 'absolute', width: '100%'}}></div>
-    <div style={styling}>
-        <h1 style={{fontSize:'8vw', fontStyle: 'normal', fontWeight: '700'}}> 
-             start <span style= {{color: '#FFFFFF', fontStyle: 'oblique', fontSize: '9vw', fontWeight: '700'}}> 
-            {word} </span>  
+    <><div
+      <body style={{ backgroundColor: '#393939', position: 'absolute', height: '100%', width: '100%'}}></body>
+        <div style={styling}>
+          <h1 style={{fontSize:'8vw', fontStyle: 'normal', fontWeight: '700'}}> 
+                start <span style= {{color: '#FFFFFF', fontStyle: 'oblique', fontSize: '9vw', fontWeight: '700'}}> 
+                {word} </span>  
             <h2 style={{fontSize:'8vw', fontStyle: 'normal', fontWeight: '700'}}> your resume with </h2>
-        </h1>
-        <h3 style={{
-          fontSize:'11vw',
-          fontFamily: 'Lato',
-          fontStyle: 'normal',
-          fontWeight: '900',
-          color: '#FFFFFF',
-          width: '973px',
-          height: '500px',
-          left: '63px',
-          top: '280px'}}>
-          Curriculum Vit<span style={{color: '#EC4A4A', fontWeight: '900'}}>AI </span></h3>
-          
-          <button style= {{color: 'blue'}} onClick={() => {
-            navigate('/signup', {replace: true})
-          }}> Insert Arrow Here </button>
-          {/* // image arrow and on click event 
-          for the arrow on side of landing page: WIP??
-          <h3 style={{position: 'absolute', width: '120.42px', 
-          height: '92.95px', left: '1282.2px', top: '479.31px',
-          border: '14px solid #FFFFFF', transform: 'rotate(125deg)'}}> */}
-          
-      </div></>
+          </h1>
+            <h3 style={{
+              fontSize:'11vw',
+              fontFamily: 'Lato',
+              fontStyle: 'normal',
+              fontWeight: '900',
+              color: '#FFFFFF',
+              width: '973px',
+              height: '500px',
+              left: '63px',
+              top: '280px'}}>
+              Curriculum Vit<span style={{color: '#EC4A4A', fontWeight: '900'}}>AI </span></h3>
+              
+            <button style= {{backgroundColor: '#393939', color: 'red'}} onClick={() => {
+                navigate('/signup', {replace: true})
+              }}> arrow here 
+            </button>
+              {/* // image arrow and on click event 
+              for the arrow on side of landing page: WIP??
+              <h3 style={{position: 'absolute', width: '120.42px', 
+              height: '92.95px', left: '1282.2px', top: '479.31px',
+              border: '14px solid #FFFFFF', transform: 'rotate(125deg)'}}> */}
+        </div>
+    </div></>
     );
     
+    // justify content 
+    // class = col-9
+    // class = col-3
 
   }
 
