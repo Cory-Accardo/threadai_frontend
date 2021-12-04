@@ -29,7 +29,7 @@ function Header({isAuthenticated, firstName}) {
                 </h1>
               </div> :
               <div>
-                <a className="button" href="">
+                <a className="button" href="/login">
                   Login
                 </a>
                 <a className="button" href="/signup">
