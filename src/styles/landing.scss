@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+.words{
+    font-family: 'Lato', sans-serif;
+    width: 90%;
+    color: white;
+    font-size: calc(5vh + 5vw);
+    font-weight: bold;
+    margin: calc(40px + 2vh);
+}
+
+.specialWord{
+    color: #EC4A4A;
+    font-style: italic;
+}
+
+.ai{
+    color: #EC4A4A;
+}
+
+.space{
+    background-color: #393939;
+    height:40px;
+}
+
+.arrow{
+    display: flex;
+    justify-content: center;
+    height: calc(250px + 2vh);
+    margin-top: 25vh;
+    margin-right: 5vw;
+}

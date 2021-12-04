@@ -7,11 +7,18 @@ function ResumeHome() {
     <div>
       <Header isAuthenticated={false}/>
       <hr/>
+      <div className="grayspace"></div>
       <div className="main">
         <div className="sidebar">
-          <a href="/create">
-            text
+          <a className="createButton" href="/create">
+              <p className="buttonBackground">
+                Create your own
+              </p>
           </a>
+          <h2>
+            Filter
+          </h2>
+          <hr className="sidebarHR"/>
         </div>
         <div className="body">
           <Resume resumeObject={{author: 'Cory Accardo', industry: 'Tech'}}/>

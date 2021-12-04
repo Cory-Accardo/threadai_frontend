@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 hr {
     display: block;
     border: 0;
@@ -15,7 +17,7 @@ hr {
 }
 
 .sidebar {
-    width: 22%;
+    width: 25%;
 }
 
 .body{
@@ -23,3 +25,47 @@ hr {
     gap: 20px;
 
 }
+
+.createButton{
+    display: flex;
+    margin: calc(10px + 1vh);
+    margin-top: 3vh;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.buttonBackground{
+    background-color: #EC4A4A;
+    width: 78%;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: calc(24px + 0.8vh);
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+}
+
+h2{
+    font-family: 'Lato', sans-serif;
+    font-size: calc(24px + 0.8vh);
+    text-decoration: none;
+    color: white;
+    margin-left: 22%;
+}
+
+.sidebarHR{
+    opacity: 100%;
+    border-top: 2px solid white;
+    width: 78%;
+    margin-left: 11%;
+
+}
+
+.grayspace{
+    background-color: #393939;
+    height:30px;
+}
+
+
+
