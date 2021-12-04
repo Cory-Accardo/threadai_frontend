@@ -37,7 +37,8 @@ function LandingPageBody() {
 
 
     return (
-    <><body style={{ backgroundColor: '#393939', position: 'absolute', height: '100%', width: '100%' }}></body><div style={styling}>
+    <><body style={{ backgroundColor: '#393939', position: 'absolute', height: '100%', width: '100%' }}></body>
+    <div style={styling}>
         <h1 style={{ fontSize: '8vw', fontStyle: 'normal', fontWeight: '700' }}>
           start <span style={{ color: '#FFFFFF', fontStyle: 'oblique', fontSize: '9vw', fontWeight: '700' }}>
             {word} </span>
