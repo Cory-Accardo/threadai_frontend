@@ -7,7 +7,7 @@ import MultiDropdownInput from '../components/MultiDropdownInput';
 import MultiAutocomplete from '../components/MultiAutocomplete';
 import SearchableDropdown from '../components/SearchableDropdown';
 
-function Homepage() {
+function Testpage() {
 
     function validate(params) {
         if (params.test_dropdown === '' || !params.test_multi_autocomplete?.length) {
@@ -42,4 +42,4 @@ function Homepage() {
     );
 }
 
-export default Homepage;
+export default Testpage;

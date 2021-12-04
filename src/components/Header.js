@@ -1,6 +1,7 @@
 import '../styles/nav.scss';
 import logo from '../styles/logo.png';
 import Pill from '../components/Pill'
+import LandingPage from '../pages/LandingPage';
 
 const styling = {
 
@@ -12,44 +13,29 @@ const styling = {
 
 }
 
-function Header({isAuthenticated}) {
+function Header({isAuthenticated, firstName}) {
     return (
       <div className="navbar">
-          <img src={logo} height="100%"></img>
+          <a href="/home">
+            <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0">
+            </img>
+          </a>
           {
             isAuthenticated === true ?
               <div>
                 <h1>
                   <i> Welcome, </i>
-                  <strong> Bridget</strong>
+                  <strong> {firstName}</strong>
                 </h1>
               </div> :
               <div>
-              <div>Login</div> 
-              <div>Sign Up</div>
-
+                <a className="button" href="/login">
+                  Login
+                </a>
+                <a className="button" href="/signup">
+                  Sign Up
+                </a>
               </div>
-
-// ^ css flex container?
-// /* Sign up deets from figma*/
-// position: absolute;
-// width: 137px;
-// height: 70px;
-// left: 1241px;
-// top: 52px;
-
-// font-family: Lato;
-// font-style: normal;
-// font-weight: bold;
-// font-size: 40px;
-// line-height: 48px;
-// display: flex;
-// align-items: center;
-// text-align: center;
-
-// color: #FFFFFF;
-
-
           }
       </div>
     );
