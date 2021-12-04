@@ -1,0 +1,25 @@
+hr {
+    display: block;
+    border: 0;
+    border-top: 4px solid white;
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.main{
+    display: flex;
+    background-color: #393939;
+    height: calc(100vh - 130px);
+}
+
+.sidebar {
+    width: 22%;
+}
+
+.body{
+    display: flex;
+    gap: 20px;
+
+}
