@@ -1,17 +1,5 @@
 import '../styles/nav.scss';
 import logo from '../styles/logo.png';
-import Pill from '../components/Pill'
-import LandingPage from '../pages/LandingPage';
-
-const styling = {
-
-  backgroundColor: 'white',
-  fontSize: '10px',
-  width: '40px',
-  border: '2px solid',
-  borderRadius: '20px'
-
-}
 
 function Header({isAuthenticated, firstName}) {
     return (
