@@ -7,9 +7,8 @@ class LandingPage extends Component {
     render() {
         return(
             <div>
-                <Header isAuthenticated={true}/>
+                <Header isAuthenticated={true} firstName={"Bridget"}/>
                 <LandingPageBody/>
-                
             </div>
         );
     }
