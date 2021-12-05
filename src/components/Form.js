@@ -6,8 +6,9 @@ import MultiDropdownInput from './MultiDropdownInput';
 import MultiAutocomplete from './MultiAutocomplete';
 import SearchableDropdown from '../components/SearchableDropdown';
 import axios from 'axios';
+import '../styles/form.scss';
 
-function Form({id, children, initialState, action, validation, method, onResponse}) {
+function Form({id, children, initialState, action, validation, method, onResponse, styleName}) {
     // initialState is an object mapping ids to the desired initial state of the corresponding input
 
     const idToIndexMap = {};
@@ -119,8 +120,7 @@ function Form({id, children, initialState, action, validation, method, onRespons
     const childInputs = buildFormTree(children, 0);
 
     return (
-      <div
-        id={id}>
+      <div id={id} className={styleName}>
           {childInputs}
       </div>
     );
