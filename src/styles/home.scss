@@ -24,11 +24,12 @@ hr {
 }
 
 .body{
+    justify-content: flex-start;
     display: flex;
     min-height: calc(100vh - 130px);
     flex-wrap: wrap;
-    margin-right: 40px;
-    margin-left: 40px;
+    margin-right: 20px;
+    margin-left: 60px;
     overflow: scroll;
     flex-shrink: 1;
 }
@@ -44,7 +45,7 @@ hr {
 
 .buttonBackground{
     background-color: #EC4A4A;
-    width: 78%;
+    width: 90%;
     text-align: center;
     font-family: 'Lato', sans-serif;
     font-size: calc(24px + 0.8vh);
