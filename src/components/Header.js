@@ -13,7 +13,9 @@ function Header({isAuthenticated, firstName}) {
               <div>
                 <h1>
                   <i> Welcome, </i>
-                  <strong> {firstName}</strong>
+                  <a className="welcome" href="/home">
+                    {firstName}
+                  </a>
                 </h1>
               </div> :
               <div>
