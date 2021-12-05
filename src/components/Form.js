@@ -122,8 +122,6 @@ function Form({id, children, initialState, action, validation, method, onRespons
 
     const childInputs = buildFormTree(children, 0);
 
-    console.log('Running with id ' + id);
-
     return (
       <div
         id={id}>
