@@ -57,12 +57,13 @@ function Form({id, children, initialState, action, validation, method, onRespons
         for (const correlation in idToIndexMap) {
             params[correlation] = formStateArray[idToIndexMap[correlation]];
         }
-        if (validation(params)) {
+        // If validation is undefined we assume there is no validation to be done
+        if (validation === undefined || validation(params)) {
             // If the action is just a string, then shoot an HTTP request to the address specified by it, with parameters based on the state
             if (typeof action === 'string') {
                 axios.request({
                     url: action,
-                    method: 'POST',
+                    method: method ? method : 'GET',
                     params: params
                 })
                 .then(res => onResponse(res))
@@ -74,6 +75,7 @@ function Form({id, children, initialState, action, validation, method, onRespons
         }
     }
 
+    // Needed to create unique keys if items in the Form don't have ids
     let uidCounter = 0;
 
     // Build a new tree, replacing every instance of a Form input with one that has its state-lifting properties
@@ -84,6 +86,7 @@ function Form({id, children, initialState, action, validation, method, onRespons
         for (const currentChild of currentChildrenArray) {
 
             if (currentChild?.type === Input || currentChild?.type === MultiInput || currentChild?.type === DropdownInput || currentChild?.type === MultiDropdownInput || currentChild?.type === SearchableDropdown || currentChild?.type === MultiAutocomplete) {
+
                 const ChildType = currentChild.type;
                 newChildrenArray.push(
                     <ChildType
@@ -114,6 +117,7 @@ function Form({id, children, initialState, action, validation, method, onRespons
                 newChildrenArray.push(currentChild);
             }
         }
+
         return newChildrenArray;
     }
 
