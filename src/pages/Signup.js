@@ -6,6 +6,7 @@ import MultiAutocomplete from '../components/MultiAutocomplete';
 import logo from '../styles/logo.png';
 import { useState } from 'react';
 import { ethnicities, jobs, roles, locations } from '../inputs.js';
+import '../styles/login.scss';
 
 function SignupPage() {
 
@@ -31,28 +32,33 @@ function SignupPage() {
 
     if (currentPage === 0) {
         pageContent =
-            <div>
-                <div className="grayspace"></div>
-                <div className="grayspace"></div>
-                <div className="grayspace"></div>
-                <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0"/>
-                <div className="grayspace"></div>
+            <div className = "login">
+                <div className="logo">
+                    <a href="/home">
+                        <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0">
+                        </img>
+                    </a>
+                </div>
                 <Form
                     id='signup_username_form'
                     action='/signup/username'
                     method='POST'
                     validation={usernameValidation}
-                    onResponse={(response) => setCurrentPage(1)}>
-                        <Input id='signup_username' className='signup_input' promptText='username'/>
-                        <div className="grayspace"></div>
-                        <Input id='signup_password' className='signup_input' promptText='password'/>
-                        <div className="grayspace"></div>
-                        <Input id='signup_password_repeat' className='signup_input' promptText='re-enter password'/>
-                        <div className="grayspace"></div>
-                        <button id='signup_username_submit'>Sign up</button>
+                    onResponse={(response) => setCurrentPage(1)}
+                    styleName="loginForm">
+                        <Input id='signup_username' className='loginInput' promptText='email'/>
+                        <div/>
+                        <Input id='signup_password' className='loginInput' promptText='password'/>
+                        <div/>
+                        <Input id='signup_password_repeat' className='loginInput' promptText='re-enter password'/>
+                        <div/>
+                        <button id='signup_username_submit' className="submitButton">
+                            Sign up
+                        </button>
                 </Form>
-                <div className="grayspace"></div>
-                <p>Already a CVAI user? Login <a href='/login'>here</a></p>
+                <p className="signup">
+                    Already a CVAI user? Login <a href='/login' className="link">here</a>
+                </p>
             </div>
     } else {
         let infoPrompt;
@@ -113,16 +119,12 @@ function SignupPage() {
                 </Form>
             break;
         }
-        pageContent = <div>
-            <div className="grayspace"></div>
-            <div className="grayspace"></div>
-            <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0"/>
-            <div className="grayspace"></div>
-            <div className="grayspace"></div>
-            {infoPrompt}
-            <div className="grayspace"></div>
-            {infoForm}
-        </div>
+        pageContent =
+            <div className="signupContainer">
+                <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0"/>
+                {infoPrompt}
+                {infoForm}
+            </div>
     }
 
     return pageContent;

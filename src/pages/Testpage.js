@@ -33,9 +33,9 @@ function Testpage() {
                 <MultiInput id='test_multi_input' promptText='Type in your three favorite animals' className='test_class' pillClassName='test_class_pill' maxInputs={3}/>
             </span>
             <p>Choose your location</p>
-            <MultiAutocomplete id='test_multi_autocomplete' className='test_class' pillClassName='test_class_pill' maxInputs={3} options={['Los Angeles', 'Absolutely nowhere', 'New York', 'Topeka']}/>
+            <MultiAutocomplete id='test_multi_autocomplete' className='test_class' pillClassName='test_class_pill' promptText='Your location, now!' maxInputs={3} options={['Los Angeles', 'Absolutely nowhere', 'New York', 'Topeka']}/>
             <p>Choose your favorite color</p>
-            <SearchableDropdown id='test_searchable_dropdown' className='test_class' options={['Red', 'Green', 'Cyan', 'Gant']}/>
+            <SearchableDropdown id='test_searchable_dropdown' className='test_class' promptText='Every color of the rainbow' options={['Red', 'Green', 'Cyan', 'Gant']}/>
             <button id='submit_button'/>
         </div>
     </Form>

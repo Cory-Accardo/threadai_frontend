@@ -4,7 +4,7 @@ import { useState } from "react";
 
 // Basically a MultiDropdownInput with a search function: lets the user type in anything
 // they want, but suggests autocomplete results in a dropdown list
-function MultiAutocomplete({id, className, pillClassName, options, maxInputs, setInput, currentInput}) {
+function MultiAutocomplete({id, className, pillClassName, promptText, options, maxInputs, setInput, currentInput}) {
 
     const [value, setValue] = useState('');
 
@@ -42,6 +42,7 @@ function MultiAutocomplete({id, className, pillClassName, options, maxInputs, se
             id={id}
             className={className}>
                 <Autocomplete
+                    inputProps={{placeholder: promptText}}
                     getItemValue={(item) => item.label}
                     items={options.map((option) => {
                         return {label: option}
