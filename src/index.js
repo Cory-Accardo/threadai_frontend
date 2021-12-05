@@ -18,12 +18,12 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Testpage/>}/>
+        <Route path="/" element={<LandingPage/>}/>
         <Route path="/signup" element={<Signup/>}/>
-        <Route path= "/landing" element={<LandingPage/>}/>
-        <Route path= "/home" element={<ResumeHome/>}/>
         <Route path= "/login" element={<Login/>}/>
+        <Route path= "/home" element={<ResumeHome/>}/>
         <Route path= "/create" element={<ResumeBuilder/>}/>
+        <Route path= "/test" element={<Testpage/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
