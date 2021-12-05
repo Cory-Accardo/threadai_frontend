@@ -33,7 +33,12 @@ function SignupPage() {
     if (currentPage === 0) {
         pageContent =
             <div className = "login">
-                <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0"/>
+                <div className="logo">
+                    <a href="/home">
+                        <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0">
+                        </img>
+                    </a>
+                </div>
                 <Form
                     id='signup_username_form'
                     action='/signup/username'

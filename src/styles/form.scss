@@ -5,3 +5,10 @@
     align-items: center;
     margin-top: 50px;
 }
+
+.mainForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
