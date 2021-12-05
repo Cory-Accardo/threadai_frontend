@@ -1,18 +1,3 @@
-// import Header from '../components/Header'
-
-// function ResumeBuilder() {
-//     return(
-//         <div>
-//             <Header isAuthenticated={false}/>
-//             <h1>
-//                 Hello, I am the resume bulder page.
-//             </h1>
-//         </div>
-//     );
-// }
-
-// export default ResumeBuilder;
-
 import Header from '../components/Header'
 import Form from '../components/Form'
 import Input from '../components/Input';
@@ -54,43 +39,44 @@ function ResumeBuilder() {
             <span> 
                 2. Education
                 Please provide information about educational institutions, 3 max.
-                <MultiDropdownInput id='test_multi_dropdown' promptText='Educational Institutions' className='test_class' pillClassName='test_class_pill' options={['1', '2', '3', '4']} maxInputs={3}/>
+                <SearchableDropdown id='educational_dropdown' promptText= 'Educational Institutions' className='test_class' options={['Red', 'Green', 'Cyan', 'Gant']}/>
+                {/* <MultiDropdownInput id='test_multi_dropdown' promptText='Educational Institutions' className='test_class' pillClassName='test_class_pill' options={['1', '2', '3', '4']} maxInputs={3}/> */}
             </span>
 
             <span>
                 3. Experience
                 Provide information about up to 5 possible work/internship experiences
                 Experience 1
-                Company: <Input id='test_input' className='test_class' promptText='Company Name'/>
-                Role: <Input id='test_input' className='test_class' promptText='Role'/>
-                Description: <Input id='test_input' className='test_class' promptText='Description'/>
+                Company: <Input id='experience_company1' className='test_class' promptText='Company Name'/>
+                Role: <Input id='experience_role1' className='test_class' promptText='Role'/>
+                Description: <Input id='experience_description1' className='test_class' promptText='Description'/>
 
                 Experience 2
-                Company: <Input id='test_input' className='test_class' promptText='Company Name'/>
-                Role: <Input id='test_input' className='test_class' promptText='Role'/>
-                Description: <Input id='test_input' className='test_class' promptText='Description'/>
+                Company: <Input id='experience_company2' className='test_class' promptText='Company Name'/>
+                Role: <Input id='experience_role2' className='test_class' promptText='Role'/>
+                Description: <Input id='experience_description2' className='test_class' promptText='Description'/>
 
                 Experience 3
-                Company: <Input id='test_input' className='test_class' promptText='Company Name'/>
-                Role: <Input id='test_input' className='test_class' promptText='Role'/>
-                Description: <Input id='test_input' className='test_class' promptText='Description'/>
+                Company: <Input id='experience_company3' className='test_class' promptText='Company Name'/>
+                Role: <Input id='experience_role3' className='test_class' promptText='Role'/>
+                Description: <Input id='experience_description3' className='test_class' promptText='Description'/>
 
                 Experience 4
-                Company: <Input id='test_input' className='test_class' promptText='Company Name'/>
-                Role: <Input id='test_input' className='test_class' promptText='Role'/>
-                Description: <Input id='test_input' className='test_class' promptText='Description'/>
+                Company: <Input id='experience_company4' className='test_class' promptText='Company Name'/>
+                Role: <Input id='experience_role4' className='test_class' promptText='Role'/>
+                Description: <Input id='experience_description4' className='test_class' promptText='Description'/>
 
                 Experience 5
-                Company: <Input id='test_input' className='test_class' promptText='Company Name'/>
-                Role: <Input id='test_input' className='test_class' promptText='Role'/>
-                Description: <Input id='test_input' className='test_class' promptText='Description'/>
+                Company: <Input id='experience_company5' className='test_class' promptText='Company Name'/>
+                Role: <Input id='experience_role5' className='test_class' promptText='Role'/>
+                Description: <Input id='experience_description5' className='test_class' promptText='Description'/>
             </span>
 
             <span> 
                 4. Skills
                 Provide up to 10 skills to list on your resume
                 Experience 1
-                <MultiInput id='test_multi_input' promptText='Type in your skills' className='test_class' pillClassName='test_class_pill' maxInputs={3}/>
+                <MultiInput id='skills_multi_input' promptText='Type in your skills' className='test_class' pillClassName='test_class_pill' maxInputs={3}/>
 
             </span>
 
@@ -98,7 +84,7 @@ function ResumeBuilder() {
                 5. Executive summary
                 Use GTP-3 to generate an executive summary about yourself based
                 on the information you provided and edit as you need
-                <Input id='test_input' className='test_class' promptText='Write your executive summary here...'/>
+                <Input id='exec_summ_input' className='test_class' promptText='Write your executive summary here...'/>
             </span>
 
             <span>
@@ -136,3 +122,17 @@ provide up to 10 skills to list
 5. exec summary
 text box write in
 */
+
+
+// </div>
+// <DropdownInput id='test_dropdown' className='test_class' options={['hi', 'bye', 'see ya']} promptText='Greeting'/>
+// <MultiDropdownInput id='test_multi_dropdown' promptText='Thing' className='test_class' pillClassName='test_class_pill' options={['1', '2', '3', '4']} maxInputs={3}/>
+// <span>
+//     <Input id='test_input' className='test_class' promptText='Type anything you want'/>
+//     <MultiInput id='test_multi_input' promptText='Type in your three favorite animals' className='test_class' pillClassName='test_class_pill' maxInputs={3}/>
+// </span>
+// <p>Choose your location</p>
+// <MultiAutocomplete id='test_multi_autocomplete' className='test_class' pillClassName='test_class_pill' maxInputs={3} options={['Los Angeles', 'Absolutely nowhere', 'New York', 'Topeka']}/>
+// <p>Choose your favorite color</p>
+// <SearchableDropdown id='test_searchable_dropdown' className='test_class' options={['Red', 'Green', 'Cyan', 'Gant']}/>
+// <button id='submit_button'/>
