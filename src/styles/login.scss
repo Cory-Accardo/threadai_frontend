@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+.login {
+    display: flex;
+    height: 100vh;
+    background-color: #393939;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.signup {
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-style: italic;
+    font-size: calc(6px + 1vw + 1vh);
+}
+
+.link {
+    color: white;
+}
+
+.submitButton {
+    margin-top: 20%;
+    font-family: 'Lato', sans-serif;
+    font-style: bold italic;
+    background-color: #EC4A4A;
+    border: none;
+    color: white;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px;
+}
