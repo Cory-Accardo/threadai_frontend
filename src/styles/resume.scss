@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+$width: calc(140px + 5vh + 6vw);
+
+
+.image-container {
+    float: left;
+    width: $width;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+    margin: auto;
+    flex-shrink: 1;
+  }
+
+  .image-container img {
+    width: $width;
+    position: absolute;
+  }
+
+
+  .image-caption {
+    display: inline-block;
+    width: $width;
+    height: auto;
+    background: rgba(0, 0, 0, 0.7);
+    vertical-align: center;
+    position: absolute;
+    opacity: 0;
+    transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+  }
+
+  .image-caption p {
+    vertical-align: center;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: calc(6px + 1vw);
+    color: #fff;
+    height: calc($width * 1.235);
+    line-height: calc($width * 1.235);
+  }
+
+  .image-container:hover .image-caption {
+    opacity: 1;
+  }

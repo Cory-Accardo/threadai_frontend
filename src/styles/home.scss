@@ -13,17 +13,19 @@ hr {
 .main{
     display: flex;
     background-color: #393939;
-    height: calc(100vh - 130px);
+    min-height: calc(100vh - 130px);
 }
 
 .sidebar {
-    width: 25%;
+    width: 40%;
 }
 
 .body{
     display: flex;
-    gap: 20px;
-
+    min-height: calc(100vh - 130px);
+    flex-wrap: wrap;
+    margin-right: 40px;
+    margin-left: 40px;
 }
 
 .createButton{
@@ -46,6 +48,11 @@ hr {
     border-radius: 8px;
 }
 
+.buttonBackground:hover{
+    background-color: gray;
+
+}
+
 h2{
     font-family: 'Lato', sans-serif;
     font-size: calc(24px + 0.8vh);
@@ -64,7 +71,11 @@ h2{
 
 .grayspace{
     background-color: #393939;
-    height:30px;
+    height:15px;
+}
+
+.spacing{
+    margin-right: 30px;
 }
 
 

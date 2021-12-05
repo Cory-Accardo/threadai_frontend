@@ -6,7 +6,10 @@ function ResumeHome() {
   return (
     <div>
       <Header isAuthenticated={false}/>
+      <div className="grayspace"></div>
       <hr/>
+      <div className="grayspace"></div>
+      <div className="grayspace"></div>
       <div className="grayspace"></div>
       <div className="main">
         <div className="sidebar">
@@ -21,12 +24,27 @@ function ResumeHome() {
           <hr className="sidebarHR"/>
         </div>
         <div className="body">
-          <Resume resumeObject={{author: 'Cory Accardo', industry: 'Tech'}}/>
-          <Resume resumeObject={{author: 'Cory Accardo', industry: 'Tech'}}/>
-          <Resume resumeObject={{author: 'Cory Accardo', industry: 'Tech'}}/>
-          <Resume resumeObject={{author: 'Cory Accardowerwerwerwerwer', industry: 'Techwerwerwerwerwerwerwer'}}/>
-          <Resume resumeObject={{author: 'Cory Accardo', industry: 'Tech'}}/>
-          <Resume resumeObject={{author: 'Cory Accardo', industry: 'Tech'}}/>
+          <div className="spacing">
+            <Resume resumeObject={{author: 'Cory Alexander Accardo', email: 'GoodName@usc.edu'}}/>
+          </div>
+          <div className="spacing">
+            <Resume resumeObject={{author: 'Good Name', email: 'GoodName@usc.edu'}}/>
+          </div>
+          <div className="spacing">
+            <Resume resumeObject={{author: 'Annoying Name', email: 'annoyance@usc.edu'}}/>
+          </div>
+          <div className="spacing">
+            <Resume resumeObject={{author: 'Name Name', email: 'namename@usc.edu'}}/>
+          </div>
+          <div className="spacing">
+            <Resume resumeObject={{author: 'First Last', email: 'firstlast@usc.edu'}}/>
+          </div>
+          <div className="spacing">
+            <Resume resumeObject={{author: 'Bridget Bell', email: 'bgbell@usc.edu'}}/>
+          </div>
+          <div className="spacing">
+            <Resume resumeObject={{author: 'Luze Lozano', email: 'LukeLozano@usc.edu'}}/>
+          </div>
         </div>
       </div>
     </div>
