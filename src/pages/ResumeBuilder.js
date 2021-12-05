@@ -31,10 +31,10 @@ function ResumeBuilder() {
             
             <span> 
                 1. Contact Information  
-                Email: <Input id='test_input' className='test_class' promptText='Email'/>
-                Address: <Input id='test_input' className='test_class' promptText='Address'/>
-                Phone Number: <Input id='test_input' className='test_class' promptText='Phone Number'/>
-                Website: <Input id='test_input' className='test_class' promptText='Website'/>
+                Email: <Input id='email_input' className='test_class' promptText='Email'/>
+                Address: <Input id='address_input' className='test_class' promptText='Address'/>
+                Phone Number: <Input id='phone_input' className='test_class' promptText='Phone Number'/>
+                Website: <Input id='website_input' className='test_class' promptText='Website'/>
             </span>
 
             <span> 
@@ -100,40 +100,3 @@ function ResumeBuilder() {
 }
 
 export default ResumeBuilder;
-
-//<body style={{ backgroundColor: '#393939', position: 'absolute', height: '100%', width: '100%' }}></body>
-
-/*
-1. contact info
-Email - fill in 
-address - fill in
-phone - fill in 
-website- fill in
-2. education
-add education button
-3. experience
-up to 5 experiences
-company - fill in
-role - fill in
-description - fill in
-...
-4. skills
-provide up to 10 skills to list
-- add skill button
-5. exec summary
-text box write in
-*/
-
-
-// </div>
-// <DropdownInput id='test_dropdown' className='test_class' options={['hi', 'bye', 'see ya']} promptText='Greeting'/>
-// <MultiDropdownInput id='test_multi_dropdown' promptText='Thing' className='test_class' pillClassName='test_class_pill' options={['1', '2', '3', '4']} maxInputs={3}/>
-// <span>
-//     <Input id='test_input' className='test_class' promptText='Type anything you want'/>
-//     <MultiInput id='test_multi_input' promptText='Type in your three favorite animals' className='test_class' pillClassName='test_class_pill' maxInputs={3}/>
-// </span>
-// <p>Choose your location</p>
-// <MultiAutocomplete id='test_multi_autocomplete' className='test_class' pillClassName='test_class_pill' maxInputs={3} options={['Los Angeles', 'Absolutely nowhere', 'New York', 'Topeka']}/>
-// <p>Choose your favorite color</p>
-// <SearchableDropdown id='test_searchable_dropdown' className='test_class' options={['Red', 'Green', 'Cyan', 'Gant']}/>
-// <button id='submit_button'/>
