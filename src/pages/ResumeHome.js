@@ -3,6 +3,12 @@ import Resume from '../components/Resume'
 import Header from '../components/Header';
 
 function ResumeHome() {
+
+  function buttonFunction(sortType){
+    console.log("sort " + sortType + " button clicked");
+  }
+
+
   return (
     <div>
       <Header isAuthenticated={false}/>
@@ -19,9 +25,29 @@ function ResumeHome() {
               </p>
           </a>
           <h2>
-            Filter
+            Sort
           </h2>
           <hr className="sidebarHR"/>
+          <button className="sortButton" onClick={buttonFunction("author")}>
+            <p className="sortOptions">
+              Sort by author
+            </p>
+          </button>
+          <button className="sortButton" onClick={buttonFunction("industry")}>
+            <p className="sortOptions">
+              Sort by industry
+            </p>
+          </button>
+          <button className="sortButton" onClick={buttonFunction("role")}>
+            <p className="sortOptions">
+              Sort by role
+            </p>
+          </button>
+          <button className="sortButton" onClick={buttonFunction("location")}>
+            <p className="sortOptions">
+              Sort by geographic location
+            </p>
+          </button>
         </div>
         <div className="body">
           <div className="spacing">
