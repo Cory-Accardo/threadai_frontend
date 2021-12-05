@@ -14,10 +14,13 @@ hr {
     display: flex;
     background-color: #393939;
     min-height: calc(100vh - 130px);
+    overflow: scroll;
+
 }
 
 .sidebar {
     width: 40%;
+    min-height: calc(100vh - 130px);
 }
 
 .body{
@@ -26,6 +29,8 @@ hr {
     flex-wrap: wrap;
     margin-right: 40px;
     margin-left: 40px;
+    overflow: scroll;
+    flex-shrink: 1;
 }
 
 .createButton{
@@ -50,7 +55,6 @@ hr {
 
 .buttonBackground:hover{
     background-color: gray;
-
 }
 
 h2{
@@ -76,6 +80,7 @@ h2{
 
 .spacing{
     margin-right: 30px;
+    margin-bottom: calc(400px + 2vw);
 }
 
 
