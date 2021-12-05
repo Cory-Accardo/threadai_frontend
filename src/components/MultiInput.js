@@ -27,10 +27,8 @@ function MultiInput({id, className, pillClassName, promptText, maxInputs, setInp
             id={id}
             className={className}>
                 <input
-                    defaultValue={
-                        // If currentInput is undefined or empty, default to the prompt, otherwise use the last element
-                        currentInput?.length ? currentInput[currentInput.length - 1] : promptText
-                    }
+                    placeholder={promptText}
+                    defaultValue={''}
                     onKeyDown={(e) => {
                         // If the user hits enter
                         if (e.keyCode === 13) {

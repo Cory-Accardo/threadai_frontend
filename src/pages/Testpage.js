@@ -29,7 +29,7 @@ function Testpage() {
             <DropdownInput id='test_dropdown' className='test_class' options={['hi', 'bye', 'see ya']} promptText='Greeting'/>
             <MultiDropdownInput id='test_multi_dropdown' promptText='Thing' className='test_class' pillClassName='test_class_pill' options={['1', '2', '3', '4']} maxInputs={3}/>
             <span>
-                <Input id='test_input' className='test_class'/>
+                <Input id='test_input' className='test_class' promptText='Type anything you want'/>
                 <MultiInput id='test_multi_input' promptText='Type in your three favorite animals' className='test_class' pillClassName='test_class_pill' maxInputs={3}/>
             </span>
             <p>Choose your location</p>

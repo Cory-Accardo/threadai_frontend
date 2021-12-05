@@ -73,10 +73,6 @@ function Form({id, children, initialState, action, validation, method, onRespons
         }
     }
 
-    for (const element of children.props.children) {
-        console.log(element);
-    }
-
     let uidCounter = 0;
 
     // Build a new tree, replacing every instance of a Form input with one that has its state-lifting properties

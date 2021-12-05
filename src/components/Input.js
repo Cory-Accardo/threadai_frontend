@@ -1,4 +1,4 @@
-function Input({id, className, setInput, currentInput}) {
+function Input({id, className, promptText, setInput, currentInput}) {
 
     return (
         <input
@@ -7,6 +7,7 @@ function Input({id, className, setInput, currentInput}) {
             onChange={(e) => {
                 setInput(e.target.value)
             }}
+            placeholder={promptText}
             value={currentInput || ''}/>
     );
 }
