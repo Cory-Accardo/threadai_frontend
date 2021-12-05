@@ -23,10 +23,19 @@ const jobs = [
 
 const roles = [
     'Intern',
+    'Associate',
     'Manager',
     'Board Member',
     'CEO'
 ]
+
+//git hub repo of ediucations csv
+const educational_institutions = [
+    
+
+
+]
+
 
 // From https://github.com/kjhealy/us-county/blob/master/data/census/fips-by-state.csv
 const locations = [

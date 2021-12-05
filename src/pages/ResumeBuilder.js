@@ -6,6 +6,7 @@ import DropdownInput from '../components/DropdownInput';
 import MultiDropdownInput from '../components/MultiDropdownInput';
 import MultiAutocomplete from '../components/MultiAutocomplete';
 import SearchableDropdown from '../components/SearchableDropdown';
+import {jobs, roles, locations } from '../inputs.js';
 
 function ResumeBuilder() {
 
@@ -39,7 +40,7 @@ function ResumeBuilder() {
             <span> 
                 2. Education
                 Please provide information about educational institutions, 3 max.
-                <SearchableDropdown id='educational_dropdown' promptText= 'Educational Institutions' className='test_class' options={['Red', 'Green', 'Cyan', 'Gant']}/>
+                <SearchableDropdown id='educational_dropdown' promptText= 'Educational Institutions' className='test_class' options={['USC', 'UCLA', 'Stanford']}/>
                 {/* <MultiDropdownInput id='test_multi_dropdown' promptText='Educational Institutions' className='test_class' pillClassName='test_class_pill' options={['1', '2', '3', '4']} maxInputs={3}/> */}
             </span>
 
