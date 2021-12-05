@@ -19,8 +19,10 @@ function Login() {
     <>
         <div className="login">
             <div className="logo">
-                <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0">
-                </img>
+                <a href="/home">
+                    <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0">
+                    </img>
+                </a>
             </div>
             <div className="form">
                 <Form hasPills={true} action="https://www.google.com" method='get' validation={validate} onResponse={handleResponse} styleName="loginForm">
