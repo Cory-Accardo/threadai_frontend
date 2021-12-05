@@ -60,7 +60,7 @@ function ResumeHome() {
             <Resume resumeObject={{author: 'Victor Adamchik', email: 'adamchik@usc.edu'}}/>
           </div>
           <div className="spacing">
-            <Resume resumeObject={{author: 'Alex Preiger', email: 'apreiger@usc.edu'}}/>
+            <Resume resumeObject={{author: 'Alex Prieger', email: 'aprieger@usc.edu'}}/>
           </div>
           <div className="spacing">
             <Resume resumeObject={{author: 'Jarret Spino', email: 'spino@usc.edu'}}/>
