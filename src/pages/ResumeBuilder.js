@@ -42,6 +42,10 @@ function ResumeBuilder() {
     <Header isAuthenticated={false}/>
     <Form hasPills={true} action="https://www.google.com" method='get' validation={validate} onResponse={handleResponse}>
         <div>
+            <div style = {{fontFamily: 'Lato', color: 'white'}}>
+            Contact Information
+            </div>
+
             <DropdownInput id='test_dropdown' className='test_class' options={['hi', 'bye', 'see ya']} promptText='Greeting'/>
             <MultiDropdownInput id='test_multi_dropdown' promptText='Thing' className='test_class' pillClassName='test_class_pill' options={['1', '2', '3', '4']} maxInputs={3}/>
             <span>
