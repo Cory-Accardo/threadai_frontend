@@ -1,5 +1,4 @@
 import { useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../styles/landing.scss';
 import arrow from '../styles/arrow.png';
 
@@ -29,8 +28,6 @@ function LandingPageBody() {
       if(nextWord.done) worderator = words.values();
       setWord(nextWord.value);
     }
-
-    const navigate = useNavigate();
 
     useEffect( () =>{ //This is to prevent memrory leak
         const wordInterval = setInterval(refreshWord, 800);
