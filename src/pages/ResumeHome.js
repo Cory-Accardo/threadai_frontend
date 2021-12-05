@@ -54,16 +54,16 @@ function ResumeHome() {
             <Resume resumeObject={{author: 'Cory Alexander Accardo', email: 'GoodName@usc.edu'}}/>
           </div>
           <div className="spacing">
-            <Resume resumeObject={{author: 'Good Name', email: 'GoodName@usc.edu'}}/>
+            <Resume resumeObject={{author: 'Tommy Trojan', email: 'ttrojan@usc.edu'}}/>
           </div>
           <div className="spacing">
-            <Resume resumeObject={{author: 'Annoying Name', email: 'annoyance@usc.edu'}}/>
+            <Resume resumeObject={{author: 'Victor Adamchik', email: 'adamchik@usc.edu'}}/>
           </div>
           <div className="spacing">
-            <Resume resumeObject={{author: 'Name Name', email: 'namename@usc.edu'}}/>
+            <Resume resumeObject={{author: 'Alex Preiger', email: 'apreiger@usc.edu'}}/>
           </div>
           <div className="spacing">
-            <Resume resumeObject={{author: 'First Last', email: 'firstlast@usc.edu'}}/>
+            <Resume resumeObject={{author: 'Jarret Spino', email: 'spino@usc.edu'}}/>
           </div>
           <div className="spacing">
             <Resume resumeObject={{author: 'Bridget Bell', email: 'bgbell@usc.edu'}}/>
