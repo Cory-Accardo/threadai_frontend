@@ -1,10 +1,10 @@
 import Pill from './Pill';
 
 // Class to take up to maxInputs (should be > 1) user inputs, selecting from among a dropdown list
-function MultiDropdownInput({id, className, pillClassName, promptText, options, maxInputs, setInputs, currentInputs}) {
+function MultiDropdownInput({id, className, pillClassName, promptText, options, maxInputs, setInput, currentInput}) {
     // options is an array of strings, which represent the options that can be selected
-    // currentInputs is an array of strings representing the current inputs selected; length should be at most maxInputs.
-    // The last value of currentInputs is the most recently selected item, the one that should be shown.
+    // currentInput is an array of strings representing the current inputs selected; length should be at most maxInputs.
+    // The last value of currentInput is the most recently selected item, the one that should be shown.
 
     const optionsList = options?.map((label) =>
             <option
@@ -16,14 +16,14 @@ function MultiDropdownInput({id, className, pillClassName, promptText, options, 
 
     function onPillDelete(label) {
         // Copy inputs and delete the element label from it
-        const newInputs = currentInputs.slice();
-        newInputs.splice(currentInputs.indexOf(label), 1);
-        setInputs(newInputs);
+        const newInput = currentInput.slice();
+        newInput.splice(currentInput.indexOf(label), 1);
+        setInput(newInput);
     }
 
-    // We need to check if the currentInputs is an Array because it will be undefined to start with
-    const pillsList = Array.isArray(currentInputs) ?
-        currentInputs.map((label) =>
+    // We need to check if the currentInput is an Array because it will be undefined to start with
+    const pillsList = Array.isArray(currentInput) ?
+        currentInput.map((label) =>
             <Pill
                 key={label}
                 content={label}
@@ -38,14 +38,14 @@ function MultiDropdownInput({id, className, pillClassName, promptText, options, 
                 <select
                     value=''
                     onChange={(e) => {
-                        if (currentInputs === undefined) {
-                            setInputs([e.target.value]);
+                        if (currentInput === undefined) {
+                            setInput([e.target.value]);
                             // Ignore duplicates or excess choices after hitting limit
-                        } else if (currentInputs.length < maxInputs && !currentInputs.includes(e.target.value)) {
+                        } else if (currentInput.length < maxInputs && !currentInput.includes(e.target.value)) {
                             // Copy inputs and add new element to them
-                            const newInputs = currentInputs.slice();
-                            newInputs.push(e.target.value);
-                            setInputs(newInputs);
+                            const newInput = currentInput.slice();
+                            newInput.push(e.target.value);
+                            setInput(newInput);
                         }
                     }}>
                         <option hidden disabled value=''>{promptText}</option>

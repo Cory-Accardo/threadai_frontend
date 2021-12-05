@@ -36,6 +36,7 @@ function Testpage() {
             <MultiAutocomplete id='test_multi_autocomplete' className='test_class' pillClassName='test_class_pill' maxInputs={3} options={['Los Angeles', 'Absolutely nowhere', 'New York', 'Topeka']}/>
             <p>Choose your favorite color</p>
             <SearchableDropdown id='test_searchable_dropdown' className='test_class' options={['Red', 'Green', 'Cyan', 'Gant']}/>
+            <button id='submit_button'/>
         </div>
     </Form>
     </>

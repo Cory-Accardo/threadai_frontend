@@ -7,151 +7,125 @@ import MultiAutocomplete from './MultiAutocomplete';
 import SearchableDropdown from '../components/SearchableDropdown';
 import axios from 'axios';
 
-function Form({id, children, action, validation, method, onResponse}) {
+function Form({id, children, initialState, action, validation, method, onResponse}) {
+    // initialState is an object mapping ids to the desired initial state of the corresponding input
+
+    const idToIndexMap = {};
+
+    // Assigns indices to each component that has Form-related state based on a postorder traversal of the document tree
+    function assignIndices(currentChildren, currentIndex) {
+        const currentChildrenArray = Array.isArray(currentChildren) ? currentChildren : [currentChildren];
+        for (const currentChild of currentChildrenArray) {
+            if (currentChild?.type === Input || currentChild?.type === MultiInput || currentChild?.type === DropdownInput || currentChild?.type === MultiDropdownInput || currentChild?.type === SearchableDropdown || currentChild?.type === MultiAutocomplete) {
+                idToIndexMap[currentChild.props.id] = currentIndex;
+                currentIndex++;
+                currentIndex = assignIndices(currentChild.props.children, currentIndex);
+            } else if (typeof currentChild !== 'undefined') {
+                currentIndex = assignIndices(currentChild?.props?.children, currentIndex);
+            }
+        }
+        return currentIndex;
+    }
+
+    assignIndices(children, 0);
+
+    // Transform the initial state from an object with useful labels to an array, which is needed because React state
+    // does not play nice with objects
+    const initialStateArray = [];
+
+    for (const state in initialState) {
+        initialStateArray[state.id] = state.state;
+    }
 
     // An array with the relevant state of each child component, in the same order as they appear
     // When the array is updated, every component will be re-rendered, so there's room for performance improvement
     // For our purposes, performance should be irrelevant
-    const [formStateArray, setFormStateArray] = useState([]);
+    const [formStateArray, setFormStateArray] = useState(initialStateArray);
 
-    const setInput = (index, id, input) => {
-        console.log('Setting state for element ' + index + ' to {id: ' + id + ', state: ' + input + '}');
+    const setInput = (index, input) => {
+        console.log('Setting state for element ' + index + ' to  ' + input);
         const newFormState = formStateArray.slice();
-        newFormState[index] = {
-            id: id,
-            state: input
-        };
+        newFormState[index] = input;
         setFormStateArray(newFormState);
     }
 
-    function buildFormTree(children, stateIndex) {
-        const startStateIndex = stateIndex;
-        const newChildrenTree = []
-        let childrenAsArray = [];
-        if (Array.isArray(children)) {
-            childrenAsArray = children;
-        } else if (children !== undefined) {
-            childrenAsArray[0] = children;
-        }
-        for (const child of childrenAsArray) {
-            switch (child.type) {
-                case DropdownInput:
-                    stateIndex++;
-                    newChildrenTree.push(<DropdownInput
-                        id={child.props.id}
-                        key={child.props.id}
-                        className={child.props.className}
-                        options={child.props.options}
-                        promptText={child.props.promptText}
-                        /* Have to curry functions like this to capture the current value of stateIndex instead of using the final value*/
-                        setInput={((stateIndex, id) => (newInput) => setInput(stateIndex, id, newInput))(stateIndex, child.props.id)}
-                        currentInput={formStateArray[stateIndex]?.state}/>);
-                    break;
-                case MultiDropdownInput:
-                    stateIndex++;
-                    newChildrenTree.push(<MultiDropdownInput
-                        id={child.props.id}
-                        key={child.props.id}
-                        className={child.props.className}
-                        pillClassName={child.props.pillClassName}
-                        options={child.props.options}
-                        promptText={child.props.promptText}
-                        maxInputs={child.props.maxInputs}
-                        setInputs={((stateIndex, id) => (newInputs) => setInput(stateIndex, id, newInputs))(stateIndex, child.props.id)}
-                        currentInputs={formStateArray[stateIndex]?.state}/>);
-                    break;
-                case Input:
-                    stateIndex++;
-                    newChildrenTree.push(<Input
-                        id={child.props.id}
-                        key={child.props.id}
-                        className={child.props.className}
-                        setInput={((stateIndex, id) => (newInput) => setInput(stateIndex, id, newInput))(stateIndex, child.props.id)}
-                        currentInput={formStateArray[stateIndex]?.state}/>);
-                    break;
-                case MultiInput:
-                    stateIndex++;
-                    newChildrenTree.push(<MultiInput
-                        id={child.props.id}
-                        key={child.props.id}
-                        className={child.props.className}
-                        pillClassName={child.props.pillClassName}
-                        promptText={child.props.promptText}
-                        maxInputs={child.props.maxInputs}
-                        setInputs={((stateIndex, id) => (newInputs) => setInput(stateIndex, id, newInputs))(stateIndex, child.props.id)}
-                        currentInputs={formStateArray[stateIndex]?.state}/>);
-                    break;
-                case SearchableDropdown:
-                    stateIndex++;
-                    newChildrenTree.push(<SearchableDropdown
-                        id={child.props.id}
-                        key={child.props.id}
-                        className={child.props.className}
-                        options={child.props.options}
-                        setInput={((stateIndex, id) => (newInput) => setInput(stateIndex, id, newInput))(stateIndex, child.props.id)}
-                        currentInput={formStateArray[stateIndex]?.state}/>);
-                    break;
-                case MultiAutocomplete:
-                    stateIndex++;
-                    newChildrenTree.push(<MultiAutocomplete
-                        id={child.props.id}
-                        key={child.props.id}
-                        className={child.props.className}
-                        pillClassName={child.props.pillClassName}
-                        options={child.props.options}
-                        maxInputs={child.props.maxInputs}
-                        setInputs={((stateIndex, id) => (newInputs) => setInput(stateIndex, id, newInputs))(stateIndex, child.props.id)}
-                        currentInputs={formStateArray[stateIndex]?.state}/>);
-                    break;
-                case 'p':
-                    newChildrenTree.push(child);
-                    break;
-                default:
-                    const {childTree, numStateComponents} = buildFormTree(child.props.children, stateIndex);
-                    stateIndex += numStateComponents;
-                    const ChildType = child.type;
-                    newChildrenTree.push(<ChildType {...child.props}>
-                        {childTree}
-                    </ChildType>);
-                    break;
-            }
-        }
-        return {childTree: newChildrenTree, numStateComponents: stateIndex - startStateIndex};
-    }
-
-    const childInputs = buildFormTree(children, 0).childTree;
-
     function submit() {
         // Convert the state array into an object with keys named for the ids of each object, and values of the state
-        const params = formStateArray.reduce((paramMap, stateObj) => {
-            paramMap[stateObj.id] = stateObj.state;
-            return paramMap;
-        }, {})
+        const params = {};
+
+        for (const correlation in idToIndexMap) {
+            params[correlation] = formStateArray[idToIndexMap[correlation]];
+        }
         if (validation(params)) {
             // If the action is just a string, then shoot an HTTP request to the address specified by it, with parameters based on the state
             if (typeof action === 'string') {
                 axios.request({
                     url: action,
                     method: 'POST',
-                    params: params,
-                    headers: {'Access-Control-Allow-Origin': '*'}
+                    params: params
                 })
                 .then(res => onResponse(res))
                 .catch(err => onResponse(err));
-            // If the action isn't a string, then we assume that it's a function, so call it with an argument of the state
-            } else {
+            // If the action isn't a string but a function, then call it with an argument of the state
+            } else if (typeof action === 'function'){
                 action(params);
             }
         }
     }
 
+    for (const element of children.props.children) {
+        console.log(element);
+    }
+
+    let uidCounter = 0;
+
+    // Build a new tree, replacing every instance of a Form input with one that has its state-lifting properties
+    // (setInput and currentInput) set properly
+    function buildFormTree(currentChildren) {
+        const newChildrenArray = [];
+        const currentChildrenArray = Array.isArray(currentChildren) ? currentChildren : [currentChildren];
+        for (const currentChild of currentChildrenArray) {
+
+            if (currentChild?.type === Input || currentChild?.type === MultiInput || currentChild?.type === DropdownInput || currentChild?.type === MultiDropdownInput || currentChild?.type === SearchableDropdown || currentChild?.type === MultiAutocomplete) {
+                const ChildType = currentChild.type;
+                newChildrenArray.push(
+                    <ChildType
+                        key={currentChild.props.id}
+                        setInput={(newInput) => setInput(idToIndexMap[currentChild.props.id], newInput)}
+                        currentInput={formStateArray[idToIndexMap[currentChild.props.id]]}
+                        {...currentChild.props}/>
+                );
+            } else if (currentChild?.type === 'button') {
+                newChildrenArray.push(
+                    <button
+                        key={currentChild.props.id}
+                        onClick={submit}
+                        {...currentChild.props}/>
+                );
+            } else if (currentChild?.type !== undefined) {
+                const childTree = buildFormTree(currentChild?.props?.children);
+                const ChildType = currentChild.type;
+                newChildrenArray.push(
+                    <ChildType
+                        key={currentChild.props.id ? currentChild.props.id : uidCounter++}
+                        {...currentChild.props}>
+                            {childTree}
+                    </ChildType>
+                );
+            } else {
+                // Needed if the currentChild is not a tag, such the inner content of <p>I'm a paragraph</p>
+                newChildrenArray.push(currentChild);
+            }
+        }
+        return newChildrenArray;
+    }
+
+    const childInputs = buildFormTree(children, 0);
+
     return (
       <div
         id={id}>
           {childInputs}
-          <button
-            id={id + '_submit_button'}
-            onClick={submit}/>
       </div>
     );
   }
