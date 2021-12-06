@@ -65,26 +65,26 @@ function SignupPage() {
         let infoForm;
         switch (currentPage) {
             case 1:
-                infoPrompt = <p key={0}>Let's get started. Tell us a bit about yourself:</p>
+                infoPrompt = <p key={0} className="signupText">Let's get started. Tell us a bit about yourself:</p>
                 infoForm = <Form
                     id='signup_personal_form'
                     key={1}
                     action='/signup/personal'
                     method='POST'
                     validation={personalValidation}
-                    onResponse={(response) => setCurrentPage(2)}>
-                        <div>
-                            <Input id='signup_first_name' className='signup_input' promptText='First name'/>
-                            <Input id='signup_middle_initial' className='signup_input' promptText='M.I.'/>
-                            <Input id='signup_last_name' className='signup_input' promptText='Last name'/>
+                    onResponse={(response) => setCurrentPage(2)}
+                    styleName="signupForm">
+                        <div className="signupRow">
+                            <Input id='signup_first_name' className='signupInput' promptText='First name'/>
+                            <Input id='signup_middle_initial' className='signupInput' promptText='M.I.'/>
+                            <Input id='signup_last_name' className='signupInput' promptText='Last name'/>
                         </div>
-                        <div className="grayspace"></div>
-                        <div>
-                            <Input id='signup_age' className='signup_input' promptText='Age'/>
-                            <DropdownInput id='signup_gender' className='signup_input' promptText='Gender' options={['male', 'female']}/>
-                            <DropdownInput id='signup_ethnicity' className='signup_input' promptText='Ethnicity' options={ethnicities}/>
+                        <div className="signupRow">
+                            <Input id='signup_age' className='signupInput' promptText='Age'/>
+                            <DropdownInput id='signup_gender' className='signupInput' promptText='Gender' options={['Male', 'Female', 'Nonbinary/Queer']}/>
+                            <DropdownInput id='signup_ethnicity' className='signupInput' promptText='Ethnicity' options={ethnicities}/>
                         </div>
-                        <button id='signup_personal_submit'>Next</button>
+                        <button id='signup_personal_submit' className="nextButton">Next</button>
                 </Form>
                 break;
             case 2:
@@ -120,8 +120,13 @@ function SignupPage() {
             break;
         }
         pageContent =
-            <div className="signupContainer">
-                <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0"/>
+            <div className="login">
+                <div className="logo">
+                    <a href="/home">
+                        <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0">
+                        </img>
+                    </a>
+                </div>
                 {infoPrompt}
                 {infoForm}
             </div>

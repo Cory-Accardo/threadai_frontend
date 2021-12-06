@@ -35,6 +35,20 @@
     border-radius: 3px;
 }
 
+.nextButton {
+    margin-top: 12%;
+    font-family: 'Lato', sans-serif;
+    font-style: bold italic;
+    background-color: #EC4A4A;
+    border: none;
+    color: white;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 3px;
+}
+
 .logoMargin{
     height: 50%;
     width: auto;
@@ -45,4 +59,23 @@
 .space {
     background-color: #393939;
     height:15px;
+}
+
+.signupFlex {
+    display: flex;
+}
+
+.signupText {
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-style: italic;
+    font-size: calc(6px + 1vw + 1vh);
+    margin-top: calc(60px + 2vh);
+    margin-bottom: calc(10px + 2vh);
+}
+
+.signupRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }

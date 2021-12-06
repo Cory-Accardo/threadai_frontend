@@ -2,11 +2,22 @@
 
 .loginInput{
     font-family: 'Lato', sans-serif;
-    color: white;
+    color: black;
     width: 200%;
     padding: 5%;
     margin: 5%;
     margin-top: 10%;
+    border-radius: 8px;
+}
+
+.signupInput{
+    font-family: 'Lato', sans-serif;
+    color: black;
+    padding: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 15vw;
+    margin-top: 8%;
     border-radius: 8px;
 }
 

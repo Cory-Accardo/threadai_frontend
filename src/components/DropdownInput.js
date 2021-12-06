@@ -1,3 +1,5 @@
+import '../styles/inputComponent.scss';
+
 // Class to take user input, selecting from among a dropdown list. Basically just simple React wrapper around select
 function DropdownInput({id, className, promptText, options, setInput, currentInput}){
     // options is an array of strings, which represent the options that can be selected
