@@ -1,4 +1,5 @@
 import Pill from './Pill';
+import '../styles/inputComponent.scss';
 
 // Class to take up to maxInputs (should be > 1) user inputs, selecting from among a dropdown list
 function MultiDropdownInput({id, className, pillClassName, promptText, options, maxInputs, setInput, currentInput}) {
@@ -32,26 +33,25 @@ function MultiDropdownInput({id, className, pillClassName, promptText, options, 
         ) : undefined;
 
     return (
-        <div
-            id={id}
-            className={className}>
-                <select
-                    value=''
-                    onChange={(e) => {
-                        if (currentInput === undefined) {
-                            setInput([e.target.value]);
-                            // Ignore duplicates or excess choices after hitting limit
-                        } else if (currentInput.length < maxInputs && !currentInput.includes(e.target.value)) {
-                            // Copy inputs and add new element to them
-                            const newInput = currentInput.slice();
-                            newInput.push(e.target.value);
-                            setInput(newInput);
-                        }
-                    }}>
-                        <option hidden disabled value=''>{promptText}</option>
-                        {optionsList}
-                </select>
-                {pillsList}
+        <div id={id}>
+            <select
+                value=''
+                className={className}
+                onChange={(e) => {
+                    if (currentInput === undefined) {
+                        setInput([e.target.value]);
+                        // Ignore duplicates or excess choices after hitting limit
+                    } else if (currentInput.length < maxInputs && !currentInput.includes(e.target.value)) {
+                        // Copy inputs and add new element to them
+                        const newInput = currentInput.slice();
+                        newInput.push(e.target.value);
+                        setInput(newInput);
+                    }
+                }}>
+                    <option hidden disabled value=''>{promptText}</option>
+                    {optionsList}
+            </select>
+            {pillsList}
         </div>
     )
 

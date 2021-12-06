@@ -73,7 +73,8 @@ function SignupPage() {
                     method='POST'
                     validation={personalValidation}
                     onResponse={(response) => setCurrentPage(2)}
-                    styleName="signupForm">
+                    styleName="signupForm"
+                >
                         <div className="signupRow">
                             <Input id='signup_first_name' className='signupInput' promptText='First name'/>
                             <Input id='signup_middle_initial' className='signupInput' promptText='M.I.'/>
@@ -88,21 +89,22 @@ function SignupPage() {
                 </Form>
                 break;
             case 2:
-            infoPrompt = <p key={2}>Tell us a bit about the jobs you're interested in:</p>
+            infoPrompt = <p key={2} className="signupText">Tell us a bit about the jobs you're interested in:</p>
             infoForm = <Form
                 id='signup_job_form'
                 key={3}
                 action='/signup/jobs'
                 method='POST'
-                onResponse={(response) => setCurrentPage(3)}>
-                    <div>
-                        <MultiDropdownInput id='signup_jobs' className='signup_input' pillClassName='signup_input_pill' promptText='What&apos;s your industry?' options={jobs} maxInputs={3}/>
+                onResponse={(response) => setCurrentPage(3)}
+                styleName="signupForm"
+            >
+                    <div className="signupRow">
+                        <MultiDropdownInput id='signup_jobs' className='multiDropdown' pillClassName='pillInput' promptText='What&apos;s your industry?' options={jobs} maxInputs={3}/>
                     </div>
-                    <div>
-                        <MultiDropdownInput id='signup_roles' className='signup_input' pillClassName='signup_input_pill' promptText='What&apos;s your dream role?' options={roles} maxInputs={3}/>
+                    <div className="signupRow">
+                        <MultiDropdownInput id='signup_roles' className='multiDropdown' pillClassName='pillInput' promptText='What&apos;s your dream role?' options={roles} maxInputs={3}/>
                     </div>
-                    <div className="grayspace"></div>
-                    <button id='signup_jobs_submit'>Next</button>
+                    <button id='signup_jobs_submit' className="nextButton">Next</button>
                 </Form>
             break;
             case 3:
