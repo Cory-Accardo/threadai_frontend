@@ -82,8 +82,8 @@ function SignupPage() {
                         </div>
                         <div className="signupRow">
                             <Input id='signup_age' className='signupInput' promptText='Age'/>
-                            <DropdownInput id='signup_gender' className='signupInput' promptText='Gender' options={['Male', 'Female', 'Nonbinary/Queer']}/>
-                            <DropdownInput id='signup_ethnicity' className='signupInput' promptText='Ethnicity' options={ethnicities}/>
+                            <DropdownInput id='signup_gender' className='signupDropdownInput' promptText='Gender' options={['Male', 'Female', 'Nonbinary/Queer']}/>
+                            <DropdownInput id='signup_ethnicity' className='signupDropdownInput' promptText='Ethnicity' options={ethnicities}/>
                         </div>
                         <button id='signup_personal_submit' className="nextButton">Next</button>
                 </Form>
