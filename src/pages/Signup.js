@@ -99,7 +99,7 @@ function SignupPage() {
                 styleName="signupForm"
             >
                     <div className="signupRow">
-                        <MultiDropdownInput id='signup_jobs' className='multiDropdown' pillClassName='pillInput' promptText='What&apos;s your industry?' options={jobs} maxInputs={3}/>
+                        <MultiDropdownInput id='signup_jobs' className='multiDropdown' pillClassName='pillInput' promptText='What&apos;s your profession?' options={jobs} maxInputs={3}/>
                     </div>
                     <div className="signupRow">
                         <MultiDropdownInput id='signup_roles' className='multiDropdown' pillClassName='pillInput' promptText='What type of role are you looking for?' options={roles} maxInputs={3}/>
