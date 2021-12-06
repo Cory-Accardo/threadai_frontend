@@ -21,6 +21,16 @@ function MultiAutocomplete({id, className, pillClassName, promptText, options, m
         borderRadius: "8px"
     };
 
+    const resumeBoxStyle = {
+        fontFamily: "'Lato', sans-serif",
+        color: "black",
+        padding: "1vh",
+        width: "42vw",
+        borderRadius: "8px",
+        marginTop: "calc(2px + 0.4vh)",
+        marginBottom: "1.6vh"
+    };
+
     function onPillDelete(label) {
         // Copy inputs and delete the element label from it
         const newInput = currentInput.slice();
@@ -51,9 +61,9 @@ function MultiAutocomplete({id, className, pillClassName, promptText, options, m
     }
 
     return (
-        <div id={id} className="formSpacing">
+        <div id={id} className={pillClassName}>
             <Autocomplete
-                inputProps={{placeholder: promptText, style: boxStyle}}
+                inputProps={{placeholder: promptText, style: className==="multiDropdown" ? boxStyle : resumeBoxStyle}}
                 getItemValue={(item) => item.label}
                 items={options.map((option) => {
                     return {label: option}
@@ -74,7 +84,6 @@ function MultiAutocomplete({id, className, pillClassName, promptText, options, m
                     addInput(val);
                 }}
                 className={className}
-
             />
             {pillsList}
         </div>

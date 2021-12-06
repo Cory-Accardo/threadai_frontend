@@ -118,7 +118,7 @@ function SignupPage() {
                 styleName="signupForm"
             >
                 <div className="signupRow">
-                    <MultiAutocomplete id='signup_location' className='multiDropdown' promptText="Pick up to 3 US counties" pillClassName='signup_input_pill' options={locations} maxInputs={3}/>
+                    <MultiAutocomplete id='signup_location' className='multiDropdown' promptText="Pick up to 3 US counties" pillClassName='formSpacing' options={locations} maxInputs={3}/>
                 </div>
                 <button id='signup_location_submit' className="nextButton">Sign up</button>
                 </Form>

@@ -41,21 +41,14 @@ hr {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-}
-
-.buttonBackground{
-    background-color: #EC4A4A;
-    width: 90%;
-    text-align: center;
     font-family: 'Lato', sans-serif;
-    font-size: calc(24px + 0.8vh);
-    text-decoration: none;
-    color: white;
-    border-radius: 8px;
 }
 
-.buttonBackground:hover{
+
+
+.createButton:hover{
     background-color: gray;
+    color: white;
 }
 
 h2{
