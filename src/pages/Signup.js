@@ -108,16 +108,19 @@ function SignupPage() {
                 </Form>
             break;
             case 3:
-            infoPrompt = <p key={4}>Tell us a bit about where you're located:</p>
+            infoPrompt = <p key={4} className="signupText">Tell us a bit about where you're located:</p>
             infoForm = <Form
                 id='signup_location_form'
                 key={5}
                 action='/signup/location'
                 method='POST'
-                onResponse={(response) => console.log('Done with signup')}>
-                    <MultiAutocomplete id='signup_location' className='signup_input' pillClassName='signup_input_pill' options={locations} maxInputs={3}/>
-                    <div className="grayspace"></div>
-                    <button id='signup_location_submit'>Sign up</button>
+                onResponse={(response) => console.log('Done with signup')}
+                styleName="signupForm"
+            >
+                <div className="signupRow">
+                    <MultiAutocomplete id='signup_location' className='multiDropdown' promptText="Pick up to 3 counties" pillClassName='signup_input_pill' options={locations} maxInputs={3}/>
+                </div>
+                <button id='signup_location_submit' className="nextButton">Sign up</button>
                 </Form>
             break;
         }
