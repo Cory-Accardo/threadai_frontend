@@ -22,6 +22,8 @@ function ResumeHome() {
           <a className="createButton" href="/create">
               Create your own
           </a>
+          <div className="grayspace"></div>
+          <div className="grayspace"></div>
           <h2>
             Sort
           </h2>
