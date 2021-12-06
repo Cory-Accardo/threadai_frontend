@@ -102,7 +102,7 @@ function SignupPage() {
                         <MultiDropdownInput id='signup_jobs' className='multiDropdown' pillClassName='pillInput' promptText='What&apos;s your industry?' options={jobs} maxInputs={3}/>
                     </div>
                     <div className="signupRow">
-                        <MultiDropdownInput id='signup_roles' className='multiDropdown' pillClassName='pillInput' promptText='What&apos;s your dream role?' options={roles} maxInputs={3}/>
+                        <MultiDropdownInput id='signup_roles' className='multiDropdown' pillClassName='pillInput' promptText='What type of role are you looking for?' options={roles} maxInputs={3}/>
                     </div>
                     <button id='signup_jobs_submit' className="nextButton">Next</button>
                 </Form>
@@ -118,7 +118,7 @@ function SignupPage() {
                 styleName="signupForm"
             >
                 <div className="signupRow">
-                    <MultiAutocomplete id='signup_location' className='multiDropdown' promptText="Pick up to 3 counties" pillClassName='signup_input_pill' options={locations} maxInputs={3}/>
+                    <MultiAutocomplete id='signup_location' className='multiDropdown' promptText="Pick up to 3 US counties" pillClassName='signup_input_pill' options={locations} maxInputs={3}/>
                 </div>
                 <button id='signup_location_submit' className="nextButton">Sign up</button>
                 </Form>

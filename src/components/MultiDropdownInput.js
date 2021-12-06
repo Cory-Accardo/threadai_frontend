@@ -33,7 +33,7 @@ function MultiDropdownInput({id, className, pillClassName, promptText, options, 
         ) : undefined;
 
     return (
-        <div id={id}>
+        <div id={id} className="formSpacing">
             <select
                 value=''
                 className={className}
@@ -51,7 +51,9 @@ function MultiDropdownInput({id, className, pillClassName, promptText, options, 
                     <option hidden disabled value=''>{promptText}</option>
                     {optionsList}
             </select>
-            {pillsList}
+            <div>
+                {pillsList}
+            </div>
         </div>
     )
 

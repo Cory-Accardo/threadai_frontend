@@ -51,7 +51,7 @@ function MultiAutocomplete({id, className, pillClassName, promptText, options, m
     }
 
     return (
-        <div id={id}>
+        <div id={id} className="formSpacing">
             <Autocomplete
                 inputProps={{placeholder: promptText, style: boxStyle}}
                 getItemValue={(item) => item.label}
