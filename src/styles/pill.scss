@@ -1,10 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 .pill{
-    padding-top: '5px';
-    text-align: 'center';
-    font-size: '13px';
-    overflow: 'hidden';
-    height: '35px';
-    width: '100px';
+    display: flex;
+    flex-direction: row;
     border: 'solid 2px black';
-    border-radius: '20px';
+    font-family: 'Lato', sans-serif;
+    background-color: #EC4A4A;
+    color: white;
+    justify-content: space-between;
+    width: 14vw;
+    border-radius: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+.pillText{
+    margin: 0.5vh;
+}
+
+.pillButton {
+    background-color: transparent;
+    border: none;
+    color: #393939;
 }
