@@ -94,9 +94,9 @@ function SignupPage() {
                             <Input id='signup_last_name' className='signupInput' promptText='Last name'/>
                         </div>
                         <div className="signupRow">
-                            <Input id='signup_age' className='signupInput' promptText='Age' text='number'/>
-                            <DropdownInput id='signup_gender' className='signupInput' promptText='Gender' options={['Male', 'Female', 'Nonbinary/Queer']}/>
-                            <DropdownInput id='signup_ethnicity' className='signupInput' promptText='Ethnicity' options={ethnicities}/>
+                            <Input id='signup_age' className='signupInput' promptText='Age'/>
+                            <DropdownInput id='signup_gender' className='signupDropdownInput' promptText='Gender' options={['Male', 'Female', 'Nonbinary/Queer']}/>
+                            <DropdownInput id='signup_ethnicity' className='signupDropdownInput' promptText='Ethnicity' options={ethnicities}/>
                         </div>
                         <button id='signup_personal_submit' className="nextButton">Next</button>
                 </Form>
@@ -111,10 +111,10 @@ function SignupPage() {
                 onResponse={(response) => setCurrentPage(3)}
                 styleName="signupForm">
                     <div className="signupRow">
-                        <MultiDropdownInput id='signup_jobs' className='multiDropdown' promptText='What&apos;s your industry?' options={jobs} maxInputs={3}/>
+                        <MultiAutocomplete id='signup_jobs' className='multiDropdown' promptText='What&apos;s your profession?' options={jobs} maxInputs={3}/>
                     </div>
                     <div className="signupRow">
-                        <MultiDropdownInput id='signup_roles' className='multiDropdown' promptText='What type of role are you looking for?' options={roles} maxInputs={3}/>
+                        <MultiAutocomplete id='signup_roles' className='multiDropdown' promptText='What type of role are you looking for?' options={roles} maxInputs={3}/>
                     </div>
                     <button id='signup_jobs_submit' className="nextButton">Next</button>
                 </Form>

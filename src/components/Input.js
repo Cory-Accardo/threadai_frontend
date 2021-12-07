@@ -3,7 +3,7 @@ import '../styles/inputComponent.scss';
 function Input({id, className, promptText, type, setInput, currentInput}) {
 
     return (
-        <input
+        <textarea
             id={id}
             className={className}
             placeholder={promptText}

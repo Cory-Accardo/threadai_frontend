@@ -24,25 +24,26 @@ function MultiInput({id, className, promptText, maxInputs, setInput, currentInpu
     return (
         <div
             id={id}
-            className={className}>
-                <input
-                    placeholder={promptText}
-                    defaultValue={''}
-                    onKeyDown={(e) => {
-                        // If the user hits enter
-                        if (e.keyCode === 13) {
-                            if (currentInput === undefined) {
-                                setInput([e.target.value]);
-                                // Ignore duplicates or excess choices after hitting limit
-                            } else if (currentInput.length < maxInputs && !currentInput.includes(e.target.value)) {
-                                // Copy inputs and add new element to them
-                                const newInput = currentInput.slice();
-                                newInput.push(e.target.value);
-                                setInput(newInput);
-                            }
+        >
+            <input
+                placeholder={promptText}
+                defaultValue={''}
+                className={className}
+                onKeyDown={(e) => {
+                    // If the user hits enter
+                    if (e.keyCode === 13) {
+                        if (currentInput === undefined) {
+                            setInput([e.target.value]);
+                            // Ignore duplicates or excess choices after hitting limit
+                        } else if (currentInput.length < maxInputs && !currentInput.includes(e.target.value)) {
+                            // Copy inputs and add new element to them
+                            const newInput = currentInput.slice();
+                            newInput.push(e.target.value);
+                            setInput(newInput);
                         }
-                    }}/>
-                {pillsList}
+                    }
+                }}/>
+            {pillsList}
         </div>
     )
 

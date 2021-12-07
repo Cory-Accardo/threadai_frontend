@@ -20,10 +20,10 @@ function ResumeHome() {
       <div className="main">
         <div className="sidebar">
           <a className="createButton" href="/create">
-              <p className="buttonBackground">
-                Create your own
-              </p>
+              Create your own
           </a>
+          <div className="grayspace"></div>
+          <div className="grayspace"></div>
           <h2>
             Sort
           </h2>

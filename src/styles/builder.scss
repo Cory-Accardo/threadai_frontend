@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+.sectionContainer {
+    display: flex;
+    flex-direction: column;
+    margin: calc(2.5vw + 1vh);
+}
+
+.formHeading {
+    color: #EC4A4A;
+    font-size: calc(24px + 1vh);
+    font-weight: bolder;
+}
+
+.formSection {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: calc(14px + 1vh);
+    margin-left: 2vw;
+}
+
+.experienceProject {
+    font-size: calc(14px + 1vh);
+    font-weight: bolder;
+    font-style: italic;
+    margin-top: 1.5vh;
+}
+
+.gtpButton {
+    background-color: #EC4A4A;
+    border: none;
+    border-radius: 20px;
+    width: 22vw;
+    font-size: 20px;
+    font-style: italic;
+    margin: 10px;
+    padding: 2px;
+}
+
+.createButton {
+    background-color: #EC4A4A;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    width: 18vw;
+    height: 8vh;
+    font-size: calc(20px + 1vh);
+    font-style: italic;
+    font-weight: bolder;
+    padding: 2px;
+}
+
+.builderBody {
+    display: flex;
+    background-color: #393939;
+    min-height: 100vh;
+}
+
+.resumeSidebar {
+    width: 25%;
+}
+
+.builderContainer {
+    background-color: #393939;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+}
+
+.sidebarHeading {
+    color: #EC4A4A;
+    font-size: calc(18px + 1vh);
+    font-weight: normal;
+    font-family: 'Lato', sans-serif;
+    margin: calc(2.5vw + 1.2vh);
+}
+
+.sidebarText {
+    color: #EC4A4A;
+}

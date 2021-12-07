@@ -30,8 +30,8 @@ function Login() {
                     <div/>
                     <Input id='password' className='loginInput' promptText='Password'/>
                     <div/>
-                    <button id='submit_button' className="submitButton">
-                        Submit
+                    <button id='login_button' className="submitButton">
+                        Login
                     </button>
                 </Form>
             </div>
