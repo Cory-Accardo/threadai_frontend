@@ -27,13 +27,11 @@ const App = () =>{
   const [isAuthenticated, setisAuthenticated] = useState(cookies.get('isAuthenticated'));
   const location = useLocation();
 
-  useEffect(() => {
+  useEffect( async() => {
+    await isLoggedIn();
     getUser();
   }, [location, isAuthenticated])
 
-  useEffect(() => {
-    isLoggedIn();
-  }, [location])
 
   const isLoggedIn = async() =>{
     const username = cookies.get('username');
