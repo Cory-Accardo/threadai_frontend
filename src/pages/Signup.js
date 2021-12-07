@@ -4,7 +4,7 @@ import DropdownInput from '../components/DropdownInput';
 import MultiDropdownInput from '../components/MultiDropdownInput';
 import MultiAutocomplete from '../components/MultiAutocomplete';
 import logo from '../styles/logo.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ethnicities, jobs, roles, locations } from '../inputs.js';
 import '../styles/login.scss';
 import axios from 'axios';
@@ -15,8 +15,46 @@ function SignupPage() {
 
     // Four different subpages on the signup page: 0 (username and password), 1 (personal info), 2 (job info), and 3 (location info)
     const [currentPage, setCurrentPage] = useState(0);
-    const [sessionUsername, setSessionUsername] = useState();
-    const [sessionPassword, setSessionPassword] = useState();
+
+    useEffect( async ()=>{
+        const username = cookies.get('username');
+        const password = cookies.get('password');
+        let page = 0;
+        let res;
+        try{
+            res = await axios.post(`${serverIp}/get_user`, {
+                username: username,
+                password: password
+            });
+            if(res.status == 200){ //That means a user does exist
+                const {firstName, lastName, age, gender, ethnicity, homeCity} = res.data;
+                page++;
+                if(firstName && lastName && age && gender && ethnicity){ //Then we know they completed the first page
+                    page++;
+                    res = await axios.post(`${serverIp}/get_resume`, {
+                        username: username,
+                        password: password
+                    });
+                    const { email } = res.data;
+                    if(email){ //then we know they completed the third page
+                        page++;
+                        if(homeCity){ //This means they completely filled out the signup
+                            page++;
+                        }
+                    }
+
+                }
+            }
+        }
+        catch(e){
+            //getUser failed
+          
+        }
+        finally{
+            setCurrentPage(page);
+        }
+          
+    },[])
 
 
     const cookies = new Cookies();
@@ -30,8 +68,6 @@ function SignupPage() {
                 password: signup_password
             });
             if(res.status == 200){
-                setSessionUsername(signup_username);
-                setSessionPassword(signup_password);
                 cookies.set('username', signup_username);
                 cookies.set('password', signup_password);
                 setCurrentPage(1);
@@ -42,12 +78,13 @@ function SignupPage() {
         }
     }
 
-    const personalSubmit = async({signup_first_name, signup_middle_initial, signup_password, 
+    const personalSubmit = async({signup_first_name, 
         signup_last_name, signup_age, signup_gender, signup_ethnicity}) =>{
         try{
             const res = await axios.post(`${serverIp}/update_user`, {
-                username: sessionUsername,
-                password: sessionPassword,
+        
+                username: cookies.get('username'),
+                password: cookies.get('password'),
                 firstName: signup_first_name,
                 lastName: signup_last_name,
                 age: signup_age,
@@ -65,11 +102,28 @@ function SignupPage() {
 
     const jobSubmit = async({signup_jobs, signup_roles}) =>{
         try{
-            const res = await axios.post(`${serverIp}/update_user`, {
-                username: sessionUsername,
-                password: sessionPassword,
-                jobs: signup_jobs,
-                roles: signup_roles
+            const res = await axios.post(`${serverIp}/create_resume`, {
+                username: cookies.get('username'),
+                password: cookies.get('password'),
+                skills: signup_jobs,
+                experiences: signup_roles,
+                email: cookies.get('username')
+            });
+            if(res.status == 200){
+                setCurrentPage(3);
+            }
+        }
+        catch(e){
+            alert(e.message);
+        }
+    }
+
+    const locationSubmit = async({signup_location}) =>{
+        try{
+            const res = await axios.post(`${serverIp}/create_resume`, {
+                username: cookies.get('username'),
+                password: cookies.get('password'),
+                homeCity: signup_location
             });
             if(res.status == 200){
                 setCurrentPage(3);
@@ -167,9 +221,7 @@ function SignupPage() {
             infoForm = <Form
                 id='signup_job_form'
                 key={3}
-                action='/signup/jobs'
-                method='POST'
-                onResponse={(response) => setCurrentPage(3)}
+                action={jobSubmit}
                 styleName="signupForm">
                     <div className="signupRow">
                         <MultiAutocomplete id='signup_jobs' className='multiDropdown' promptText='What&apos;s your profession?' options={jobs} maxInputs={3}/>
@@ -185,12 +237,10 @@ function SignupPage() {
             infoForm = <Form
                 id='signup_location_form'
                 key={5}
-                action='/signup/location'
-                method='POST'
-                onResponse={(response) => console.log('Done with signup')}
+                action={locationSubmit}
                 styleName="signupForm">
                 <div className="signupRow">
-                    <MultiAutocomplete id='signup_location' className='multiDropdown' promptText='Pick up to 3 US counties' options={locations} maxInputs={3}/>
+                    <DropdownInput id='signup_location' className='multiDropdown' promptText='What is your home city' options={locations}/>
                 </div>
                 <button id='signup_location_submit' className="nextButton">Sign up</button>
                 </Form>
