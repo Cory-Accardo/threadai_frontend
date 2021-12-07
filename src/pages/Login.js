@@ -2,6 +2,10 @@ import '../styles/login.scss';
 import logo from '../styles/logo.png';
 import Form from '../components/Form';
 import Input from '../components/Input';
+import axios from 'axios';
+import {serverIp} from '../constants'
+import Cookies from 'universal-cookie';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     function validate(params) {
@@ -11,8 +15,31 @@ function Login() {
         return true;
     }
 
-    function handleResponse(response) {
-        console.log(JSON.stringify(response));
+    const navigate = useNavigate();
+
+    const cookies = new Cookies();
+
+
+    const login = async({email, password}) =>{
+        let res;
+        console.log(email);
+        console.log(password);
+        try{
+            res = await axios.post(`${serverIp}/login`, {
+                username: email,
+                password: password
+            });
+            if(res.status == 200){
+                cookies.set('username', email);
+                cookies.set('password', password);
+                console.log("login successful");
+                navigate('/')
+
+            }
+        }
+        catch(e){
+            alert("Bad login");
+        }
     }
 
     return(
@@ -20,12 +47,12 @@ function Login() {
         <div className="login">
             <div className="logo">
                 <a href="/home">
-                    <img src={logo} height="100vh" width= "auto" minwidth= "0" minheight= "0">
+                    <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0">
                     </img>
                 </a>
             </div>
             <div className="form">
-                <Form hasPills={true} action="https://www.google.com" method='get' validation={validate} onResponse={handleResponse} styleName="loginForm">
+                <Form hasPills={true} action={login} styleName="loginForm">
                     <Input id='email' className='loginInput' promptText='Email'/>
                     <div/>
                     <Input id='password' className='loginInput' promptText='Password'/>
