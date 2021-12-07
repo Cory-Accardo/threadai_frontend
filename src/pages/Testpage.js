@@ -23,7 +23,7 @@ function Testpage() {
     return (
     // react fragment <> </>
     <>
-    <Header isAuthenticated={false}/>
+    <Header/>
     <Form hasPills={true} action="https://www.google.com" method='get' validation={validate} onResponse={handleResponse}>
         <div>
             <DropdownInput id='test_dropdown' className='test_class' options={['hi', 'bye', 'see ya']} promptText='Greeting'/>

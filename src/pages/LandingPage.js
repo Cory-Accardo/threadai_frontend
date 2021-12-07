@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
 import Header from '../components/Header'
 import LandingPageBody from '../components/LandingPageBody';
+import { useEffect } from 'react';
 
 
-class LandingPage extends Component {
-    render() {
-        return(
-            <div>
-                <Header isAuthenticated={true} firstName={"Bridget"}/>
-                <LandingPageBody/>
-            </div>
-        );
-    }
+const LandingPage = () =>{
+
+    return(
+        <div>
+            <Header/>
+            <LandingPageBody/>
+        </div>
+    );
 }
+
+
 
 export default LandingPage;
 

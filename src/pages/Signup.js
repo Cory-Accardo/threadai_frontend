@@ -7,13 +7,78 @@ import logo from '../styles/logo.png';
 import { useState } from 'react';
 import { ethnicities, jobs, roles, locations } from '../inputs.js';
 import '../styles/login.scss';
+import axios from 'axios';
+import {serverIp} from '../constants'
+import Cookies from 'universal-cookie';
 
 function SignupPage() {
 
     // Four different subpages on the signup page: 0 (username and password), 1 (personal info), 2 (job info), and 3 (location info)
     const [currentPage, setCurrentPage] = useState(0);
+    const [sessionUsername, setSessionUsername] = useState();
+    const [sessionPassword, setSessionPassword] = useState();
+
+
+    const cookies = new Cookies();
 
     let pageContent;
+
+    const signup = async({signup_username, signup_password}) =>{
+        try{
+            const res = await axios.post(`${serverIp}/signup`, {
+                username: signup_username,
+                password: signup_password
+            });
+            if(res.status == 200){
+                setSessionUsername(signup_username);
+                setSessionPassword(signup_password);
+                cookies.set('username', signup_username);
+                cookies.set('password', signup_password);
+                setCurrentPage(1);
+            }
+        }
+        catch(e){
+            alert(e.message);
+        }
+    }
+
+    const personalSubmit = async({signup_first_name, signup_middle_initial, signup_password, 
+        signup_last_name, signup_age, signup_gender, signup_ethnicity}) =>{
+        try{
+            const res = await axios.post(`${serverIp}/update_user`, {
+                username: sessionUsername,
+                password: sessionPassword,
+                firstName: signup_first_name,
+                lastName: signup_last_name,
+                age: signup_age,
+                gender: signup_gender,
+                ethnicity: signup_ethnicity
+            });
+            if(res.status == 200){
+                setCurrentPage(2);
+            }
+        }
+        catch(e){
+            alert(e.message);
+        }
+    }
+
+    const jobSubmit = async({signup_jobs, signup_roles}) =>{
+        try{
+            const res = await axios.post(`${serverIp}/update_user`, {
+                username: sessionUsername,
+                password: sessionPassword,
+                jobs: signup_jobs,
+                roles: signup_roles
+            });
+            if(res.status == 200){
+                setCurrentPage(3);
+            }
+        }
+        catch(e){
+            alert(e.message);
+        }
+    }
 
     function usernameValidation(params) {
         let errors = '';
@@ -55,10 +120,8 @@ function SignupPage() {
                 </div>
                 <Form
                     id='signup_username_form'
-                    action='/signup/username'
-                    method='POST'
+                    action={signup}
                     validation={usernameValidation}
-                    onResponse={(response) => setCurrentPage(1)}
                     styleName="loginForm">
                         <Input id='signup_username' className='loginInput' promptText='email'/>
                         <div/>
@@ -83,10 +146,8 @@ function SignupPage() {
                 infoForm = <Form
                     id='signup_personal_form'
                     key={1}
-                    action='/signup/personal'
-                    method='POST'
+                    action={personalSubmit}
                     validation={personalValidation}
-                    onResponse={(response) => setCurrentPage(2)}
                     styleName="signupForm">
                         <div className="signupRow">
                             <Input id='signup_first_name' className='signupInput' promptText='First name'/>
