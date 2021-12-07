@@ -16,10 +16,24 @@ function SignupPage() {
     let pageContent;
 
     function usernameValidation(params) {
-        if (params.signup_username && params.signup_password && params.signup_password === params.signup_password_repeat) {
-                return true;
+        let errors = '';
+        if (!params.signup_username) {
+            errors += 'You must enter an email.\n';
         }
-        return false;
+        if (!params.signup_password) {
+            errors += 'You must create a password.\n';
+        }
+        if (params.signup_password && !params.signup_password_repeat) {
+            errors += 'You must re-enter your password.\n';
+        }
+        if (params.signup_password && params.signup_password !== params.signup_password_repeat) {
+            errors += 'Passwords do not match.\n';
+        }
+        if (errors !== '') {
+            alert(errors);
+            return false;
+        }
+        return true;
     }
 
     function personalValidation(params) {
@@ -35,7 +49,7 @@ function SignupPage() {
             <div className = "login">
                 <div className="logo">
                     <a href="/home">
-                        <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0">
+                        <img src={logo} height="100vh" width= "auto" minwidth= "0" minheight= "0">
                         </img>
                     </a>
                 </div>
@@ -48,9 +62,9 @@ function SignupPage() {
                     styleName="loginForm">
                         <Input id='signup_username' className='loginInput' promptText='email'/>
                         <div/>
-                        <Input id='signup_password' className='loginInput' promptText='password'/>
+                        <Input id='signup_password' className='loginInput' promptText='password' type='password'/>
                         <div/>
-                        <Input id='signup_password_repeat' className='loginInput' promptText='re-enter password'/>
+                        <Input id='signup_password_repeat' className='loginInput' promptText='re-enter password' type='password'/>
                         <div/>
                         <button id='signup_username_submit' className="submitButton">
                             Sign up
@@ -73,15 +87,14 @@ function SignupPage() {
                     method='POST'
                     validation={personalValidation}
                     onResponse={(response) => setCurrentPage(2)}
-                    styleName="signupForm"
-                >
+                    styleName="signupForm">
                         <div className="signupRow">
                             <Input id='signup_first_name' className='signupInput' promptText='First name'/>
                             <Input id='signup_middle_initial' className='signupInput' promptText='M.I.'/>
                             <Input id='signup_last_name' className='signupInput' promptText='Last name'/>
                         </div>
                         <div className="signupRow">
-                            <Input id='signup_age' className='signupInput' promptText='Age'/>
+                            <Input id='signup_age' className='signupInput' promptText='Age' text='number'/>
                             <DropdownInput id='signup_gender' className='signupInput' promptText='Gender' options={['Male', 'Female', 'Nonbinary/Queer']}/>
                             <DropdownInput id='signup_ethnicity' className='signupInput' promptText='Ethnicity' options={ethnicities}/>
                         </div>
@@ -96,13 +109,12 @@ function SignupPage() {
                 action='/signup/jobs'
                 method='POST'
                 onResponse={(response) => setCurrentPage(3)}
-                styleName="signupForm"
-            >
+                styleName="signupForm">
                     <div className="signupRow">
-                        <MultiDropdownInput id='signup_jobs' className='multiDropdown' pillClassName='pillInput' promptText='What&apos;s your industry?' options={jobs} maxInputs={3}/>
+                        <MultiDropdownInput id='signup_jobs' className='multiDropdown' promptText='What&apos;s your industry?' options={jobs} maxInputs={3}/>
                     </div>
                     <div className="signupRow">
-                        <MultiDropdownInput id='signup_roles' className='multiDropdown' pillClassName='pillInput' promptText='What type of role are you looking for?' options={roles} maxInputs={3}/>
+                        <MultiDropdownInput id='signup_roles' className='multiDropdown' promptText='What type of role are you looking for?' options={roles} maxInputs={3}/>
                     </div>
                     <button id='signup_jobs_submit' className="nextButton">Next</button>
                 </Form>
@@ -115,10 +127,9 @@ function SignupPage() {
                 action='/signup/location'
                 method='POST'
                 onResponse={(response) => console.log('Done with signup')}
-                styleName="signupForm"
-            >
+                styleName="signupForm">
                 <div className="signupRow">
-                    <MultiAutocomplete id='signup_location' className='multiDropdown' promptText="Pick up to 3 US counties" pillClassName='signup_input_pill' options={locations} maxInputs={3}/>
+                    <MultiAutocomplete id='signup_location' className='multiDropdown' promptText='Pick up to 3 US counties' options={locations} maxInputs={3}/>
                 </div>
                 <button id='signup_location_submit' className="nextButton">Sign up</button>
                 </Form>
@@ -128,7 +139,7 @@ function SignupPage() {
             <div className="login">
                 <div className="logo">
                     <a href="/home">
-                        <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0">
+                        <img src={logo} height="100vh" width= "auto" minwidth= "0" minheight= "0">
                         </img>
                     </a>
                 </div>

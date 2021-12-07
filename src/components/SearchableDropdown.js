@@ -7,11 +7,9 @@ function SearchableDropdown({id, className, promptText, options, setInput, curre
         return <Autocomplete
             id={id}
             className={className}
-            getItemValue={(item) => item.label}
+            getItemValue={(item) => item}
             inputProps={{placeholder: promptText}}
-            items={options.map((option) => {
-                return {label: option}
-            })}
+            items={options}
             renderItem={(item, isHighlighted) =>
                 <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
                 {item.label}

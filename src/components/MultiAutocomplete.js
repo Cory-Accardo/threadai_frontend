@@ -5,7 +5,7 @@ import '../styles/inputComponent.scss';
 
 // Basically a MultiDropdownInput with a search function: lets the user type in anything
 // they want, but suggests autocomplete results in a dropdown list
-function MultiAutocomplete({id, className, pillClassName, promptText, options, maxInputs, setInput, currentInput}) {
+function MultiAutocomplete({id, className, promptText, options, maxInputs, setInput, currentInput}) {
 
     const [value, setValue] = useState('');
 
@@ -34,7 +34,6 @@ function MultiAutocomplete({id, className, pillClassName, promptText, options, m
             <Pill
                 key={label}
                 content={label}
-                className={pillClassName}
                 onDelete={() => onPillDelete(label)}/>
         ) : undefined;
 
@@ -54,16 +53,14 @@ function MultiAutocomplete({id, className, pillClassName, promptText, options, m
         <div id={id} className="formSpacing">
             <Autocomplete
                 inputProps={{placeholder: promptText, style: boxStyle}}
-                getItemValue={(item) => item.label}
-                items={options.map((option) => {
-                    return {label: option}
-                })}
+                getItemValue={(item) => item}
+                items={options}
                 renderItem={(item, isHighlighted) =>
                     <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-                    {item.label}
+                    {item}
                     </div>
                 }
-                shouldItemRender={(item, value) => item.label.toLowerCase().startsWith(value.toLowerCase())}
+                shouldItemRender={(item, value) => item.toLowerCase().startsWith(value.toLowerCase())}
                 value={value}
                 onChange={(e) => {
                     setValue(e.target.value);

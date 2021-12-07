@@ -86,7 +86,6 @@ function Form({id, children, initialState, action, validation, method, onRespons
         for (const currentChild of currentChildrenArray) {
 
             if (currentChild?.type === Input || currentChild?.type === MultiInput || currentChild?.type === DropdownInput || currentChild?.type === MultiDropdownInput || currentChild?.type === SearchableDropdown || currentChild?.type === MultiAutocomplete) {
-
                 const ChildType = currentChild.type;
                 newChildrenArray.push(
                     <ChildType
@@ -99,7 +98,7 @@ function Form({id, children, initialState, action, validation, method, onRespons
                 newChildrenArray.push(
                     <button
                         key={currentChild.props.id}
-                        onClick={submit}
+                        onClick={currentChild.props.isFormSubmitButton === 'no' ? currentChild.props.onClick : submit}
                         {...currentChild.props}/>
                 );
             } else if (currentChild?.type !== undefined) {

@@ -1,0 +1,27 @@
+.preferences {
+    display: flex;
+    height: 100vh;
+    background-color: #393939;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.preferencesTable {
+    /*display: flex;
+    flex-direction: column;
+    justify-content: flex-start;*/
+}
+
+.preferencesTableRow {
+    /*display: flex;
+    flex-direction: row;
+    justify-content: flex-start;*/
+}
+
+.preferencesText {
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-style: italic;
+    font-size: calc(6px + 1vw + 1vh);
+}

@@ -1,7 +1,7 @@
 // Class to display some input that the user has given from an input/dropdown box, along with the option to delete it
 import '../styles/pill.scss';
 
-function Pill({content, className, onDelete}) {
+function Pill({content, onDelete}) {
 
     return (
         <div className="pill">

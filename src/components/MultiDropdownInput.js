@@ -2,7 +2,7 @@ import Pill from './Pill';
 import '../styles/inputComponent.scss';
 
 // Class to take up to maxInputs (should be > 1) user inputs, selecting from among a dropdown list
-function MultiDropdownInput({id, className, pillClassName, promptText, options, maxInputs, setInput, currentInput}) {
+function MultiDropdownInput({id, className, promptText, options, maxInputs, setInput, currentInput}) {
     // options is an array of strings, which represent the options that can be selected
     // currentInput is an array of strings representing the current inputs selected; length should be at most maxInputs.
     // The last value of currentInput is the most recently selected item, the one that should be shown.
@@ -28,7 +28,6 @@ function MultiDropdownInput({id, className, pillClassName, promptText, options, 
             <Pill
                 key={label}
                 content={label}
-                className={pillClassName}
                 onDelete={() => onPillDelete(label)}/>
         ) : undefined;
 

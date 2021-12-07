@@ -5,7 +5,7 @@ function Header({isAuthenticated, firstName}) {
     return (
       <div className="navbar">
           <a href="/home">
-            <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0">
+            <img src={logo} height="100vh" width= "auto" minwidth= "0" minheight= "0">
             </img>
           </a>
           {

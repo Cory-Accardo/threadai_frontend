@@ -1,7 +1,7 @@
 import Pill from './Pill';
 
 // Class to take up to maxInputs (should be > 1) user inputs from a text box
-function MultiInput({id, className, pillClassName, promptText, maxInputs, setInput, currentInput}){
+function MultiInput({id, className, promptText, maxInputs, setInput, currentInput}){
     // currentInput is an array of strings representing the current inputs selected; length should be at most maxInputs.
     // The last value of currentInput is the most recently selected item, the one that should be shown.
 
@@ -18,7 +18,6 @@ function MultiInput({id, className, pillClassName, promptText, maxInputs, setInp
             <Pill
                 key={label}
                 content={label}
-                className={pillClassName}
                 onDelete={() => onPillDelete(label)}/>
         ) : undefined;
 

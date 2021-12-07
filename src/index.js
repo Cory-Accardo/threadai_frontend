@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import Signup from './pages/Signup';
+import UserPreferences from './pages/UserPreferences'
 import Testpage from './pages/Testpage';
 import Login from './pages/Login';
 import ResumeBuilder from './pages/ResumeBuilder';
@@ -22,6 +23,7 @@ ReactDOM.render(
         <Route path="/signup" element={<Signup/>}/>
         <Route path= "/login" element={<Login/>}/>
         <Route path= "/home" element={<ResumeHome/>}/>
+        <Route path= "/preferences" element={<UserPreferences/>}/>
         <Route path= "/create" element={<ResumeBuilder/>}/>
         <Route path= "/test" element={<Testpage/>}/>
       </Routes>
@@ -29,4 +31,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
