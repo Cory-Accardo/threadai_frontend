@@ -4,17 +4,20 @@ import Form from '../components/Form';
 import Input from '../components/Input';
 import axios from 'axios';
 import {serverIp} from '../constants'
+import { useNavigate } from 'react-router';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
 
-function Login({navigate}) {
+function Login() {
     function validate(params) {
         if (params.test_dropdown === '' || !params.test_multi_autocomplete?.length) {
             return false;
         }
         return true;
     }
+
+    const navigate = useNavigate();
 
 
     const login = async({email, password}) =>{

@@ -10,11 +10,14 @@ import '../styles/login.scss';
 import axios from 'axios';
 import {serverIp} from '../constants'
 import Cookies from 'universal-cookie';
+import {useNavigate} from 'react-router-dom'
 
 function SignupPage() {
 
     // Four different subpages on the signup page: 0 (username and password), 1 (personal info), 2 (job info), and 3 (location info)
     const [currentPage, setCurrentPage] = useState(0);
+    const navigate = useNavigate();
+
 
     useEffect( async ()=>{
         const username = cookies.get('username');
@@ -40,6 +43,7 @@ function SignupPage() {
                         page++;
                         if(homeCity){ //This means they completely filled out the signup
                             page++;
+                            navigate('/');
                         }
                     }
 
@@ -55,84 +59,6 @@ function SignupPage() {
         }
           
     },[])
-
-
-    const cookies = new Cookies();
-
-    let pageContent;
-
-    const signup = async({signup_username, signup_password}) =>{
-        try{
-            const res = await axios.post(`${serverIp}/signup`, {
-                username: signup_username,
-                password: signup_password
-            });
-            if(res.status == 200){
-                cookies.set('username', signup_username);
-                cookies.set('password', signup_password);
-                setCurrentPage(1);
-            }
-        }
-        catch(e){
-            alert(e.message);
-        }
-    }
-
-    const personalSubmit = async({signup_first_name, 
-        signup_last_name, signup_age, signup_gender, signup_ethnicity}) =>{
-        try{
-            const res = await axios.post(`${serverIp}/update_user`, {
-        
-                username: cookies.get('username'),
-                password: cookies.get('password'),
-                firstName: signup_first_name,
-                lastName: signup_last_name,
-                age: signup_age,
-                gender: signup_gender,
-                ethnicity: signup_ethnicity
-            });
-            if(res.status == 200){
-                setCurrentPage(2);
-            }
-        }
-        catch(e){
-            alert(e.message);
-        }
-    }
-
-    const jobSubmit = async({signup_jobs, signup_roles}) =>{
-        try{
-            const res = await axios.post(`${serverIp}/create_resume`, {
-                username: cookies.get('username'),
-                password: cookies.get('password'),
-                skills: signup_jobs,
-                experiences: signup_roles,
-                email: cookies.get('username')
-            });
-            if(res.status == 200){
-                setCurrentPage(3);
-            }
-        }
-        catch(e){
-            alert(e.message);
-        }
-    }
-
-    const locationSubmit = async({signup_location}) =>{
-        try{
-            const res = await axios.post(`${serverIp}/create_resume`, {
-                username: cookies.get('username'),
-                password: cookies.get('password'),
-                homeCity: signup_location
-            });
-            if(res.status == 200){
-                setCurrentPage(3);
-            }
-        }
-        catch(e){
-            alert(e.message);
-        }
-    }
 
     function usernameValidation(params) {
         let errors = '';
@@ -162,6 +88,97 @@ function SignupPage() {
         }
         return false
     }
+
+
+
+    const cookies = new Cookies();
+
+    let pageContent;
+
+    const signup = async({signup_username, signup_password}) =>{
+        try{
+            const res = await axios.post(`${serverIp}/signup`, {
+                username: signup_username,
+                password: signup_password
+            });
+            if(res.status == 200){
+                cookies.set('username', signup_username);
+                cookies.set('password', signup_password);
+                setCurrentPage(1);
+            }
+        }
+        catch(e){
+            alert(e.message);
+        }
+    }
+
+    //SUBMIT CALLS
+
+    const personalSubmit = async({signup_first_name, 
+        signup_last_name, signup_age, signup_gender, signup_ethnicity}) =>{
+        try{
+            const res = await axios.post(`${serverIp}/update_user`, {
+        
+                username: cookies.get('username'),
+                password: cookies.get('password'),
+                firstName: signup_first_name,
+                lastName: signup_last_name,
+                age: signup_age,
+                gender: signup_gender,
+                ethnicity: signup_ethnicity
+            });
+            if(res.status == 200){
+                setCurrentPage(2);
+            }
+        }
+        catch(e){
+            alert(e.message);
+        }
+    }
+
+    const jobSubmit = async({signup_jobs, signup_roles}) =>{
+        console.log({
+            username: cookies.get('username'),
+            password: cookies.get('password'),
+            skills: signup_jobs,
+            experiences: signup_roles,
+            email: cookies.get('username')
+        })
+        try{
+            const res = await axios.post(`${serverIp}/create_resume`, {
+                username: cookies.get('username'),
+                password: cookies.get('password'),
+                skills: signup_jobs,
+                experiences: signup_roles,
+                email: cookies.get('username')
+            });
+            if(res.status == 200){
+                setCurrentPage(3);
+            }
+        }
+        catch(e){
+            alert(e.message);
+        }
+    }
+
+    const locationSubmit = async({signup_location}) =>{
+        try{
+            const res = await axios.post(`${serverIp}/update_user`, {
+                username: cookies.get('username'),
+                password: cookies.get('password'),
+                homeCity: signup_location
+            });
+            if(res.status == 200){
+                navigate('/');
+            }
+        }
+        catch(e){
+            alert(e.message);
+        }
+    }
+
+    //PAGE CONTENT
+
 
     if (currentPage === 0) {
         pageContent =
