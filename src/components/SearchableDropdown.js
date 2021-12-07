@@ -12,10 +12,10 @@ function SearchableDropdown({id, className, promptText, options, setInput, curre
             items={options}
             renderItem={(item, isHighlighted) =>
                 <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-                {item.label}
+                {item}
                 </div>
             }
-            shouldItemRender={(item, value) => item.label.toLowerCase().startsWith(value.toLowerCase())}
+            shouldItemRender={(item, value) => item.toLowerCase().startsWith(value.toLowerCase())}
             value={currentInput}
             onChange={(e) => {
                 setInput(e.target.value);

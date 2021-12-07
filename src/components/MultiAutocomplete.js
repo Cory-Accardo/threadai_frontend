@@ -63,10 +63,8 @@ function MultiAutocomplete({id, className, promptText, options, maxInputs, setIn
         <div id={id} className={className}>
             <Autocomplete
                 inputProps={{placeholder: promptText, style: className==="multiDropdown" ? boxStyle : resumeBoxStyle}}
-                getItemValue={(item) => item.label}
-                items={options.map((option) => {
-                    return {label: option}
-                })}
+                getItemValue={(item) => item}
+                items={options}
                 renderItem={(item, isHighlighted) =>
                     <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
                     {item}
