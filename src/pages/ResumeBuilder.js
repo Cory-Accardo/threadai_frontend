@@ -25,7 +25,7 @@ function ResumeBuilder() {
     return (
     // react fragment <> </>
     <>
-    <Header isAuthenticated={false}/>
+    <Header/>
     <div className="grayspace"></div>
     <hr/>
     <div className="grayspace"></div>

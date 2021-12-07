@@ -1,7 +1,10 @@
 import '../styles/nav.scss';
 import logo from '../styles/logo.png';
+import Cookies from 'universal-cookie';
+const cookie = new Cookies();
 
-function Header({isAuthenticated, firstName}) {
+function Header() {
+
     return (
       <div className="navbar">
           <a href="/home">
@@ -9,12 +12,12 @@ function Header({isAuthenticated, firstName}) {
             </img>
           </a>
           {
-            isAuthenticated === true ?
+            cookie.get('isAuthenticated') === 'true' ?
               <div>
                 <h1>
                   <i> Welcome, </i>
                   <a className="welcome" href="/home">
-                    {firstName}
+                    {cookie.get('firstName')}
                   </a>
                 </h1>
               </div> :

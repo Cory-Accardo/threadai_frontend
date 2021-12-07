@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import Header from '../components/Header'
 import LandingPageBody from '../components/LandingPageBody';
+import { useEffect } from 'react';
 
 
-const LandingPage = ({isAuthorized, username}) =>{
+const LandingPage = () =>{
 
-    console.log(isAuthorized);
-    console.log(username)
     return(
         <div>
-            <Header isAuthenticated={isAuthorized} firstName={username}/>
+            <Header/>
             <LandingPageBody/>
         </div>
     );

@@ -19,7 +19,7 @@ function UserPreferences() {
 
     return (
         <div className='preferences'>
-            <Header isAuthenicated={true}/>
+            <Header/>
             <Form
                 id='preferences_form'
                 action='/preferences'

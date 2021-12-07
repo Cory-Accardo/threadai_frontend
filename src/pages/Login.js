@@ -5,19 +5,16 @@ import Input from '../components/Input';
 import axios from 'axios';
 import {serverIp} from '../constants'
 import Cookies from 'universal-cookie';
-import { useNavigate } from 'react-router-dom';
+const cookies = new Cookies();
 
-function Login() {
+
+function Login({navigate}) {
     function validate(params) {
         if (params.test_dropdown === '' || !params.test_multi_autocomplete?.length) {
             return false;
         }
         return true;
     }
-
-    const navigate = useNavigate();
-
-    const cookies = new Cookies();
 
 
     const login = async({email, password}) =>{
@@ -33,7 +30,7 @@ function Login() {
                 cookies.set('username', email);
                 cookies.set('password', password);
                 console.log("login successful");
-                navigate('/')
+                navigate('/');
 
             }
         }

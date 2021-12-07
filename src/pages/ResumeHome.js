@@ -11,7 +11,7 @@ function ResumeHome() {
 
   return (
     <div>
-      <Header isAuthenticated={false}/>
+      <Header/>
       <div className="grayspace"></div>
       <hr/>
       <div className="grayspace"></div>
