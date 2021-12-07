@@ -42,10 +42,8 @@
     font-family: 'Lato', sans-serif;
     color: black;
     padding: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
-    width: 15vw;
-    margin-top: 8%;
+    height: 6vh;
+    width: 30vw;
     border-radius: 8px;
 }
 
@@ -138,4 +136,12 @@
     height: 5vh;
     margin-top: 8%;
     border-radius: 8px;
+}
+
+.userMultiDropdown {
+    font-family: 'Lato', sans-serif;
+    color: black;
+    width: 100%;
+    border-radius: 8px;
+    padding: 0;
 }

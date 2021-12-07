@@ -20,7 +20,15 @@
     align-items: center;
 }
 
-.preferencesForm {
+.preferencesFormCol1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 10vw;
+}
+
+.preferencesFormCol2 {
     display: flex;
     flex-direction: row;
     justify-content: space-around;

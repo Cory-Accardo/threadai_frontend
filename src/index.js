@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import Signup from './pages/Signup';
-import UserPreferences from './pages/UserPreferences'
+import User from './pages/User'
 import Testpage from './pages/Testpage';
 import Login from './pages/Login';
 import ResumeBuilder from './pages/ResumeBuilder';
@@ -23,7 +23,7 @@ ReactDOM.render(
         <Route path="/signup" element={<Signup/>}/>
         <Route path= "/login" element={<Login/>}/>
         <Route path= "/home" element={<ResumeHome/>}/>
-        <Route path= "/preferences" element={<UserPreferences/>}/>
+        <Route path= "/user" element={<User/>}/>
         <Route path= "/create" element={<ResumeBuilder/>}/>
         <Route path= "/test" element={<Testpage/>}/>
       </Routes>
