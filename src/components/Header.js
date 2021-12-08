@@ -1,13 +1,18 @@
 import '../styles/nav.scss';
+import {useNavigate} from 'react-router-dom'
+import { useEffect } from 'react';
 import logo from '../styles/logo.png';
 import Cookies from 'universal-cookie';
 const cookie = new Cookies();
 
 function Header() {
 
+    const navigate = useNavigate();
+
+
     return (
       <div className="navbar">
-          <a href="/home">
+          <a href="/">
             <img src={logo} height="100vh" width= "auto" minwidth= "0" minheight= "0">
             </img>
           </a>
@@ -16,9 +21,18 @@ function Header() {
               <div>
                 <h1>
                   <i> Welcome, </i>
-                  <a className="welcome" href="/home">
-                    {cookie.get('firstName')}
+                  <a className="welcome" href="/user">
+                    {cookie.get('firstName') === 'null' ||  cookie.get('firstName') === 'undefined'? cookie.get('username') : cookie.get('firstName')}
                   </a>
+                  <button  style={{marginLeft: '25px', borderRadius:'10px'}} onClick={() =>{
+                    cookie.remove('username');
+                    cookie.remove('password');
+                    cookie.remove('isAuthenticated');
+                    window.location.reload();
+                    navigate('/')
+                  }}>
+                  Log out
+                  </button>
                 </h1>
               </div> :
               <div>

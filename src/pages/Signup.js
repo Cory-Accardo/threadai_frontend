@@ -49,6 +49,7 @@ function SignupPage() {
                         if(homeCity){ //This means they completely filled out the signup
                             page++;
                             navigate('/');
+                            window.location.reload()
                         }
                     }
 

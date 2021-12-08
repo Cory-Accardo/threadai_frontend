@@ -30,11 +30,10 @@ function Login() {
                 password: password
             });
             if(res.status == 200){
+                navigate('/');
                 cookies.set('username', email);
                 cookies.set('password', password);
-                console.log("login successful");
-                navigate('/');
-
+                window.location.reload()
             }
         }
         catch(e){

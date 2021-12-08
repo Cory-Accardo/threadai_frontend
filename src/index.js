@@ -25,12 +25,14 @@ const App = () =>{
 
 
   const [isAuthenticated, setisAuthenticated] = useState(cookies.get('isAuthenticated'));
+  const [firstName, setFirstName] = useState();
   const location = useLocation();
 
   useEffect( async() => {
     await isLoggedIn();
-    getUser();
+    await getUser();
   }, [location, isAuthenticated])
+
 
 
   const isLoggedIn = async() =>{
@@ -67,7 +69,8 @@ const App = () =>{
             password: password
         });
         if(res.status == 200){
-            cookies.set('firstName', res.data.firstName);  
+            cookies.set('firstName', res.data.firstName); 
+            setFirstName(res.data.firstName) 
         }
     }
     catch(e){
@@ -82,9 +85,7 @@ const App = () =>{
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path= "/login" element={<Login/>}/>
-        <Route path= "/home" element={<ResumeHome/>}/>
         <Route path= "/user" element={<User/>}/>
-        <Route path= "/create" element={<ResumeBuilder/>}/>
         <Route path= "/test" element={<Testpage/>}/>
       </Routes>
   )

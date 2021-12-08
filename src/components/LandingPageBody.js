@@ -49,7 +49,7 @@ function LandingPageBody() {
             Curriculum Vit<span className="ai">AI </span>
           </div>
           <div>
-            <a href="/home" className="arrow">
+            <a href="/user" className="arrow">
               <img src={arrow}></img>
             </a>
           </div>

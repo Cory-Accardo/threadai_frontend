@@ -58,16 +58,18 @@ function ResumeBuilder() {
 
         username: cookies.get('username'),
         password: cookies.get('password'),
-        experiences: [experience_company1, experience_company2, experience_company3, experience_company4, experience_company5, 
-                     experience_role1, experience_role2, experience_role3, experience_role4, experience_role5,
-                     experience_description1, experience_description2, experience_description3, experience_description4, experience_description5,
-                     project_title1, project_title2, project_title3, project_title4, project_title5,
-                    project_association1, project_association2, project_association3, project_association4, project_association5,
-                    project_description1, project_description2, project_description3, project_description4, project_description5],
+        experiences:  [
+                      experience_company1, experience_company2, experience_company3, experience_company4, experience_company5, 
+                      experience_role1, experience_role2, experience_role3, experience_role4, experience_role5,
+                      experience_description1, experience_description2, experience_description3, experience_description4, experience_description5,
+                      project_title1, project_title2, project_title3, project_title4, project_title5,
+                      project_association1, project_association2, project_association3, project_association4, project_association5,
+                      project_description1, project_description2, project_description3, project_description4, project_description5
+                      ],
         skills: skills_multi_input,
         education: education,
         address: address_input,
-        email: email_input,
+        email: cookies.get('username'),
         phone: phone_input,
         website: website_input,
         executiveSummary: exec_summ_input
@@ -121,7 +123,7 @@ function ResumeBuilder() {
         </div>
         <div className="resumeMain">
             <div>
-            <Form action={submitCreate} validation={validate}>
+            <Form action={submitCreate}>
                 <div className="builderContainer">
                     <div className= "sectionContainer" id="clickContactInfo">
                         <div className="formHeading">
@@ -330,7 +332,7 @@ function ResumeBuilder() {
                         </div>
                     </div>
                     <div className= "sectionContainer" id="clickSubmit">
-                        <button id='submit_button' className= "createButton" onClick={console.log("submit")}>
+                        <button id='submit_button' className= "createButton">
                             Create!
                         </button>
                     </div>
