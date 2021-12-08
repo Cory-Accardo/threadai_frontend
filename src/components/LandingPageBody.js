@@ -21,12 +21,10 @@ import arrow from '../styles/arrow.png';
 function LandingPageBody() {
     const words = ['sharpening', 'improving', 'refining', 'revamping', 'advancing', 'bettering', 'polishing', 'developing', 'boosting', 'enhancing', 'strengthening', 'supplementing', 'perfecting'];
     const [word, setWord] = useState(words[0]); //word, and setWord are getter and setter functions respectively.
-    let worderator = words.values();
 
     const refreshWord = () =>{
-      const nextWord = worderator.next();
-      if(nextWord.done) worderator = words.values();
-      setWord(nextWord.value);
+      const nextWord = words[Math.floor(Math.random() * words.length)]
+      setWord(nextWord);
     }
 
     useEffect( () =>{ //This is to prevent memrory leak
