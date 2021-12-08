@@ -74,6 +74,11 @@ function User() {
                         View Your CVAI Resume
                     </a>
                 </div>
+                <div className="resumeButtonSpacing">
+                    <a href="/friends" className="viewResume">
+                        View the list of available friends
+                    </a>
+                </div>
                 <div className="preferences">
                     <div>
                         <Form

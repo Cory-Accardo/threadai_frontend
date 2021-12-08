@@ -15,6 +15,7 @@ import {
 } from "react-router-dom";
 import LandingPage from './pages/LandingPage';
 import ResumeHome from './pages/ResumeHome';
+import FriendsList from './pages/FriendsList';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import { serverIp } from './constants';
@@ -86,6 +87,7 @@ const App = () =>{
         <Route path="/signup" element={<Signup/>}/>
         <Route path= "/login" element={<Login/>}/>
         <Route path= "/user" element={<User/>}/>
+        <Route path= "/friends" element={<FriendsList/>}/>
         <Route path= "/create" element={<ResumeBuilder/>}/>
         <Route path= "/test" element={<Testpage/>}/>
       </Routes>
