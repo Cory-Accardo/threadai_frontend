@@ -1,8 +1,21 @@
 import '../styles/home.scss';
 import Resume from '../components/Resume'
 import Header from '../components/Header';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { serverIp } from '../constants';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 function ResumeHome() {
+
+  
+  const [response, setResponse] = useState([]);
+
+  useEffect(() =>{
+    axios.post(`${serverIp}/resumes`,
+    {username: cookies.get('username'), password: cookies.get('password')}).then(({data}) => setResponse(data));
+  })
 
   function buttonFunction(sortType){
     console.log("sort " + sortType + " button clicked");
@@ -50,33 +63,15 @@ function ResumeHome() {
           </button>
         </div>
         <div className="body">
-          <div className="spacing">
-            <Resume resumeObject={{author: 'Cory Alexander Accardo', email: 'GoodName@usc.edu'}}/>
-          </div>
-          <div className="spacing">
-            <Resume resumeObject={{author: 'Tommy Trojan', email: 'ttrojan@usc.edu'}}/>
-          </div>
-          <div className="spacing">
-            <Resume resumeObject={{author: 'Victor Adamchik', email: 'adamchik@usc.edu'}}/>
-          </div>
-          <div className="spacing">
-            <Resume resumeObject={{author: 'Alex Prieger', email: 'aprieger@usc.edu'}}/>
-          </div>
-          <div className="spacing">
-            <Resume resumeObject={{author: 'Jarret Spino', email: 'spino@usc.edu'}}/>
-          </div>
-          <div className="spacing">
-            <Resume resumeObject={{author: 'Bridget Bell', email: 'bgbell@usc.edu'}}/>
-          </div>
-          <div className="spacing">
-            <Resume resumeObject={{author: 'Luze Lozano', email: 'LukeLozano@usc.edu'}}/>
-          </div>
-          <div className="spacing">
-            <Resume resumeObject={{author: 'Eli Morris', email: 'eli@usc.edu'}}/>
-          </div>
-          <div className="spacing">
-            <Resume resumeObject={{author: 'Chloe Hagmann', email: 'chloe@usc.edu'}}/>
-          </div>
+        {response.map( async ({email}) => {
+          const {data} = await axios.post(`${serverIp}/get_user`,{username: email});
+          const {firstName, lastName} = data;
+          return (
+            <div className="spacing">
+              <Resume resumeObject={{email: email, author: `${firstName} ${lastName}`}}/>
+            </div>
+          )
+        })}
         </div>
       </div>
     </div>

@@ -8,6 +8,10 @@ import MultiAutocomplete from '../components/MultiAutocomplete';
 import SearchableDropdown from '../components/SearchableDropdown';
 import {jobs, roles, locations } from '../inputs.js';
 import '../styles/builder.scss';
+import axios from 'axios';
+import { serverIp } from '../constants';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 function ResumeBuilder() {
 
@@ -18,8 +22,56 @@ function ResumeBuilder() {
         return true;
     }
 
-    function handleResponse(response) {
-        console.log(JSON.stringify(response));
+    const submitCreate = ({
+        
+        email_input, address_input, phone_input, website_input, 
+        
+        education, 
+        
+        experience_company1, experience_role1, experience_description1, 
+        
+        experience_company2, experience_role2, experience_description2, 
+        
+        experience_company3, experience_role3, experience_description3, 
+        
+        experience_company4, experience_role4, experience_description4,
+
+        experience_company5, experience_role5, experience_description5,
+
+        project_title1, project_association1, project_description1,
+        
+        project_title2, project_association2, project_description2,
+
+        project_title3, project_association3, project_description3,
+
+        project_title4, project_association4, project_description4,
+
+        project_title5, project_association5, project_description5,
+
+        skills_multi_input, 
+        
+        exec_summ_input
+
+    }) => {
+        console.log('help')
+        axios.post(`${serverIp}/update_resume`,{
+
+        username: cookies.get('username'),
+        password: cookies.get('password'),
+        experiences: [experience_company1, experience_company2, experience_company3, experience_company4, experience_company5, 
+                     experience_role1, experience_role2, experience_role3, experience_role4, experience_role5,
+                     experience_description1, experience_description2, experience_description3, experience_description4, experience_description5,
+                     project_title1, project_title2, project_title3, project_title4, project_title5,
+                    project_association1, project_association2, project_association3, project_association4, project_association5,
+                    project_description1, project_description2, project_description3, project_description4, project_description5],
+        skills: skills_multi_input,
+        education: education,
+        address: address_input,
+        email: email_input,
+        phone: phone_input,
+        website: website_input,
+        executiveSummary: exec_summ_input
+        })
     }
 
     return (
@@ -69,7 +121,7 @@ function ResumeBuilder() {
         </div>
         <div className="resumeMain">
             <div>
-            <Form hasPills={true} action="https://www.google.com" method='get' validation={validate} onResponse={handleResponse}>
+            <Form action={submitCreate} validation={validate}>
                 <div className="builderContainer">
                     <div className= "sectionContainer" id="clickContactInfo">
                         <div className="formHeading">
@@ -165,12 +217,12 @@ function ResumeBuilder() {
                                     </div>
                                     <div className="formSection">
                                         Company:
-                                        <Input id='experience_company1' className='resumeInput' promptText='Company Name'/>
+                                        <Input id='experience_company5' className='resumeInput' promptText='Company Name'/>
                                         Role:
-                                        <Input id='experience_role1' className='resumeInput' promptText='Role'/>
+                                        <Input id='experience_role5' className='resumeInput' promptText='Role'/>
 
                                         Description:
-                                        <Input id='experience_description1' className='resumeDescriptionInput' promptText='Description'/>
+                                        <Input id='experience_description5' className='resumeDescriptionInput' promptText='Description'/>
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +331,7 @@ function ResumeBuilder() {
                     </div>
                     <div className= "sectionContainer" id="clickSubmit">
                         <button id='submit_button' className= "createButton" onClick={console.log("submit")}>
-                            Create my resume!
+                            Create!
                         </button>
                     </div>
                 </div>

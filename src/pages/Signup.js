@@ -25,11 +25,16 @@ function SignupPage() {
         let page = 0;
         let res;
         try{
-            res = await axios.post(`${serverIp}/get_user`, {
+            res = await axios.post(`${serverIp}/login`, {
                 username: username,
                 password: password
             });
+            console.log(res)
             if(res.status == 200){ //That means a user does exist
+                res = await axios.post(`${serverIp}/get_user`, {
+                    username: username,
+                    password: password
+                });
                 const {firstName, lastName, age, gender, ethnicity, homeCity} = res.data;
                 page++;
                 if(firstName && lastName && age && gender && ethnicity){ //Then we know they completed the first page
@@ -55,6 +60,7 @@ function SignupPage() {
           
         }
         finally{
+            console.log(page);
             setCurrentPage(page);
         }
           
