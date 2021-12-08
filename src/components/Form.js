@@ -35,7 +35,7 @@ function Form({id, children, initialState, action, validation, method, onRespons
     const initialStateArray = [];
 
     for (const state in initialState) {
-        initialStateArray[state.id] = state.state;
+        initialStateArray[idToIndexMap[state]] = initialState[state];
     }
 
     // An array with the relevant state of each child component, in the same order as they appear

@@ -49,7 +49,7 @@ const App = () =>{
             cookies.set('username', username);
             cookies.set('password', password);
             setisAuthenticated(true);
-            cookies.set('isAuthenticated', true);  
+            cookies.set('isAuthenticated', true);
         }
     }
     catch(e){
@@ -61,31 +61,32 @@ const App = () =>{
   const getUser = async() =>{
     const username = cookies.get('username');
     const password = cookies.get('password');
-  
-  
+
+
     try{
         const res = await axios.post(`${serverIp}/get_user`, {
             username: username,
             password: password
         });
         if(res.status == 200){
-            cookies.set('firstName', res.data.firstName); 
-            setFirstName(res.data.firstName) 
+            cookies.set('firstName', res.data.firstName);
+            setFirstName(res.data.firstName)
         }
     }
     catch(e){
       //getUser failed
-  
+
     }
-    
+
     }
-  
+
   return(
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path= "/login" element={<Login/>}/>
         <Route path= "/user" element={<User/>}/>
+        <Route path= "/create" element={<ResumeBuilder/>}/>
         <Route path= "/test" element={<Testpage/>}/>
       </Routes>
   )

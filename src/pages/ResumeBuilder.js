@@ -11,9 +11,12 @@ import '../styles/builder.scss';
 import axios from 'axios';
 import { serverIp } from '../constants';
 import Cookies from 'universal-cookie';
+import {useEffect, useState } from 'react';
 const cookies = new Cookies();
 
 function ResumeBuilder() {
+
+    const [resume, setResume] = useState({});
 
     function validate(params) {
         if (params.test_dropdown === '' || !params.test_multi_autocomplete?.length) {
@@ -22,58 +25,86 @@ function ResumeBuilder() {
         return true;
     }
 
-    const submitCreate = ({
-        
-        email_input, address_input, phone_input, website_input, 
-        
-        education, 
-        
-        experience_company1, experience_role1, experience_description1, 
-        
-        experience_company2, experience_role2, experience_description2, 
-        
-        experience_company3, experience_role3, experience_description3, 
-        
-        experience_company4, experience_role4, experience_description4,
+    useEffect(async () => {
+        try{
+            const res = await axios.post(`${serverIp}/get_resume`, {
+                username: cookies.get('username'),
+                password: cookies.get('password')
+            });
+            if(res.status == 200){
+                console.log(res.data);
+                setResume(res.data);
+            }
+        }
+        catch(e){
+        }
+    }, []);
 
-        experience_company5, experience_role5, experience_description5,
+    axios.interceptors.request.use(request => {
+        console.log('Starting Request', JSON.stringify(request, null, 2))
+        return request;
+    });
 
-        project_title1, project_association1, project_description1,
-        
-        project_title2, project_association2, project_description2,
-
-        project_title3, project_association3, project_description3,
-
-        project_title4, project_association4, project_description4,
-
-        project_title5, project_association5, project_description5,
-
-        skills_multi_input, 
-        
-        exec_summ_input
-
-    }) => {
-        console.log('help')
+    function submitCreate (params) {
         axios.post(`${serverIp}/update_resume`,{
+            username: cookies.get('username'),
+            password: cookies.get('password'),
+            email: params.email_input ? params.email_input : undefined,
+            address: params.address_input ? params.address_input : undefined,
+            phone: params.phone_input ? params.phone_input : undefined,
+            website: params.website_input ? params.website_input : undefined,
+            education1: params.education ? params.education : undefined,
+            expComp1: params.experience_company1 ? params.experience_company1 : undefined,
+            expComp2: params.experience_company2 ? params.experience_company2 : undefined,
+            expComp3: params.experience_company3 ? params.experience_company3 : undefined,
+            expRole1: params.experience_role1 ? params.experience_role1 : undefined,
+            expRole2: params.experience_role2 ? params.experience_role2 : undefined,
+            expRole3: params.experience_role3 ? params.experience_role3 : undefined,
+            expDesc1: params.experience_description1 ? params.experience_description1 : undefined,
+            expDesc2: params.experience_description2 ? params.experience_description2 : undefined,
+            expDesc3: params.experience_description3 ? params.experience_description3 : undefined,
+            projTitle1: params.project_title1 ? params.project_title1 : undefined,
+            projTitle2: params.project_title2 ? params.project_title2 : undefined,
+            projTitle3: params.project_title3 ? params.project_title3 : undefined,
+            projAssoc1: params.project_association1 ? params.project_association1 : undefined,
+            projAssoc2: params.project_association2 ? params.project_association2 : undefined,
+            projAssoc3: params.project_association3 ? params.project_association3 : undefined,
+            projDesc1: params.project_description1 ? params.project_description1 : undefined,
+            projDesc2: params.project_description2 ? params.project_description2 : undefined,
+            projDesc3: params.project_description3 ? params.project_description3 : undefined,
+            skills1: params.skills_multi_input?.[0] ? params.skills_multi_input?.[0] : undefined,
+            skills2: params.skills_multi_input?.[1] ? params.skills_multi_input?.[1] : undefined,
+            skills3: params.skills_multi_input?.[2] ? params.skills_multi_input?.[2] : undefined,
+            executiveSummary: params.exec_summ_input ? params.exec_summ_input : undefined
+        });
+    }
 
-        username: cookies.get('username'),
-        password: cookies.get('password'),
-        experiences:  [
-                      experience_company1, experience_company2, experience_company3, experience_company4, experience_company5, 
-                      experience_role1, experience_role2, experience_role3, experience_role4, experience_role5,
-                      experience_description1, experience_description2, experience_description3, experience_description4, experience_description5,
-                      project_title1, project_title2, project_title3, project_title4, project_title5,
-                      project_association1, project_association2, project_association3, project_association4, project_association5,
-                      project_description1, project_description2, project_description3, project_description4, project_description5
-                      ],
-        skills: skills_multi_input,
-        education: education,
-        address: address_input,
-        email: cookies.get('username'),
-        phone: phone_input,
-        website: website_input,
-        executiveSummary: exec_summ_input
-        })
+    const initialStateObject = {
+        email_input: resume.email,
+        address_input: resume.address,
+        phone_input: resume.phone,
+        website_input: resume.website,
+        education: resume.education1,
+        experience_company1: resume.expComp1,
+        experience_company2: resume.expComp2,
+        experience_company3: resume.expComp3,
+        experience_role1: resume.expRole1,
+        experience_role2: resume.expRole2,
+        experience_role3: resume.expRole3,
+        experience_description1: resume.expDesc1,
+        experience_description2: resume.expDesc2,
+        experience_description3: resume.expDesc3,
+        project_title1: resume.projTitle1,
+        project_title2: resume.projTitle2,
+        project_title3: resume.projTitle3,
+        project_association1: resume.projAssoc1,
+        project_association2: resume.projAssoc2,
+        project_association3: resume.projAssoc3,
+        project_description1: resume.projDesc1,
+        project_description2: resume.projDesc2,
+        project_description3: resume.projDesc3,
+        skills_multi_input: [resume.skills1, resume.skills2, resume.skills3],
+        exec_summ_input: resume.executiveSummary
     }
 
     return (
@@ -123,14 +154,14 @@ function ResumeBuilder() {
         </div>
         <div className="resumeMain">
             <div>
-            <Form action={submitCreate}>
+            <Form action={submitCreate} key={JSON.stringify(resume)} initialState={initialStateObject}>
                 <div className="builderContainer">
                     <div className= "sectionContainer" id="clickContactInfo">
                         <div className="formHeading">
                             1. Contact Information
                         </div>
                         <div className="formSection">
-                            Email: <Input id='email_input' className='singularResumeInput' promptText='Email'/>
+                            Email: <p id='email_display'>{resume.email}</p>
                             Address: <Input id='address_input' className='singularResumeInput' promptText='Address'/>
                             Phone Number: <Input id='phone_input' className='singularResumeInput' promptText='Phone Number'/>
                             Website: <Input id='website_input' className='singularResumeInput' promptText='Personal Website'/>
@@ -152,7 +183,7 @@ function ResumeBuilder() {
                             3. Experience
                         </div>
                         <div className= "formSection">
-                            Please provide information about up to 5 possible work/internship experiences:
+                            Please provide information about up to 3 possible work/internship experiences:
                             <div>
                                 <div>
                                     <div className="experienceProject">
@@ -198,35 +229,6 @@ function ResumeBuilder() {
                                         <Input id='experience_description3' className='resumeDescriptionInput' promptText='Description'/>
                                     </div>
                                 </div>
-
-                                <div>
-                                    <div className="experienceProject">
-                                        Experience 4
-                                    </div>
-                                    <div className="formSection">
-                                        Company:
-                                        <Input id='experience_company4' className='resumeInput' promptText='Company Name'/>
-                                        Role:
-                                        <Input id='experience_role4' className='resumeInput' promptText='Role'/>
-
-                                        Description:
-                                        <Input id='experience_description4' className='resumeDescriptionInput' promptText='Description'/>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="experienceProject">
-                                        Experience 5
-                                    </div>
-                                    <div className="formSection">
-                                        Company:
-                                        <Input id='experience_company5' className='resumeInput' promptText='Company Name'/>
-                                        Role:
-                                        <Input id='experience_role5' className='resumeInput' promptText='Role'/>
-
-                                        Description:
-                                        <Input id='experience_description5' className='resumeDescriptionInput' promptText='Description'/>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -237,7 +239,7 @@ function ResumeBuilder() {
                             4. Projects
                         </div>
                         <div className= "formSection">
-                            Please provide information about up to 5 possible projects:
+                            Please provide information about up to 3 possible projects:
                             <div>
                                 <div>
                                     <div className="experienceProject">
@@ -276,32 +278,6 @@ function ResumeBuilder() {
                                         <Input id='project_association3' className='resumeInput' promptText='Association'/>
                                         Description:
                                         <Input id='project_description3' className='resumeDescriptionInput' promptText='Description'/>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="experienceProject">
-                                        Project 4
-                                    </div>
-                                    <div className="formSection">
-                                        Project Title:
-                                        <Input id='project_title4' className='resumeInput' promptText='Title'/>
-                                        Associated with:
-                                        <Input id='project_association4' className='resumeInput' promptText='Association'/>
-                                        Description:
-                                        <Input id='project_description4' className='resumeDescriptionInput' promptText='Description'/>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="experienceProject">
-                                        Project 5
-                                    </div>
-                                    <div className="formSection">
-                                        Project Title:
-                                        <Input id='project_title5' className='resumeInput' promptText='Title'/>
-                                        Associated with:
-                                        <Input id='project_association5' className='resumeInput' promptText='Association'/>
-                                        Description:
-                                        <Input id='project_description5' className='resumeDescriptionInput' promptText='Description'/>
                                     </div>
                                 </div>
                             </div>
