@@ -77,3 +77,50 @@
     margin-top: 10vh;
 }
 
+.unauthResumeButtonSpacing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #393939;
+    min-height: calc(100vh - 130px);
+}
+
+.viewResume {
+    background: #EC4A4A;
+    padding: 0.8vw;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: calc(12px + 0.5vw);
+    margin-left: 10vw;
+    width: fit-content;
+}
+
+.unauthViewResume {
+    background: #EC4A4A;
+    padding: 0.8vw;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: calc(12px + 0.5vw);
+    width: fit-content;
+    margin-top: 20vh;
+}
+
+.unauthText {
+    margin-top: 25vh;
+    color: white;
+    font-style: italic;
+    font-family: 'Lato', sans-serif;
+    font-size: calc(1vh + 2vw);
+}
+
+.unauthViewResume:hover {
+    background:gray;
+    color: white;
+}
+
+
+

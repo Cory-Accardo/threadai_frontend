@@ -35,8 +35,13 @@ function User() {
         return (
             <div>
                 <Header/>
-                <div className="resumeButtonSpacing">
-                    <a href="/friends" className="viewResume">
+                <div className="grayspace"></div>
+                <hr/>
+                <div className="unauthResumeButtonSpacing">
+                    <a href="/signup" className="unauthText">
+                        Want to create a resume with us? Sign up!
+                    </a>
+                    <a href="/friends" className="unauthViewResume">
                         View the list of available friends
                     </a>
                 </div>

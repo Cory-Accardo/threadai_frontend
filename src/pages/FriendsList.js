@@ -35,6 +35,7 @@ function FriendsList() {
                 <div className="friendsList">
                     {friends}
                 </div>
+                <div className="grayspace"></div>
             </div>
         </>
     );
