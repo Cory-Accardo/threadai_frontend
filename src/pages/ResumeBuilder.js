@@ -40,13 +40,8 @@ function ResumeBuilder() {
         }
     }, []);
 
-    axios.interceptors.request.use(request => {
-        console.log('Starting Request', JSON.stringify(request, null, 2))
-        return request;
-    });
-
     function submitCreate (params) {
-        axios.post(`${serverIp}/update_resume`,{
+        axios.post(`${serverIp}/update_resume`, {
             username: cookies.get('username'),
             password: cookies.get('password'),
             email: params.email_input ? params.email_input : undefined,
@@ -118,12 +113,14 @@ function ResumeBuilder() {
 
     async function generateExecutiveSummary() {
         try {
-            const res = await axios.post(`${serverIp}/generate`);
+            const res = await axios.post(`${serverIp}/generate`, {prompt: resume.email + ', who has education from ' + resume.education + ', is good at the following things:'});
             const newResume = {};
             for (const variable in resume) {
                 newResume[variable] = resume[variable];
             }
             newResume.executiveSummary = res.data;
+            console.log(newResume);
+            setResume(newResume);
         } catch {
             alert('Error updating preferences');
         }
