@@ -89,7 +89,6 @@ const App = () =>{
         <Route path= "/user" element={<User/>}/>
         <Route path= "/friends" element={<FriendsList/>}/>
         <Route path= "/create" element={<ResumeBuilder/>}/>
-        <Route path= "/test" element={<Testpage/>}/>
       </Routes>
   )
 

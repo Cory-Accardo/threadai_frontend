@@ -45,7 +45,7 @@ function Login() {
     <>
         <div className="login">
             <div className="logo">
-                <a href="/home">
+                <a href="/">
                     <img src={logo} height="100vh" width= "auto" minWidth= "0" minHeight= "0">
                     </img>
                 </a>

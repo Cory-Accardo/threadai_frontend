@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+.friendsHeader {
+    font-family: 'Lato', sans-serif;
+    //margin-top: 10vh;
+    margin-left: 8vw;
+    font-size: calc(42px + 1vw);
+    color: #EC4A4A;
+    font-weight: bolder;
+}
+
+.friendsList {
+    margin-left: 10vw;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-size: calc(24px + 0.5vw);
+}
+
+.friendsBody {
+    background-color: #393939;
+    min-height: calc(100vh - 130px);
+}

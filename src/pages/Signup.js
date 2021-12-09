@@ -58,13 +58,13 @@ function SignupPage() {
         }
         catch(e){
             //getUser failed
-          
+
         }
         finally{
             console.log(page);
             setCurrentPage(page);
         }
-          
+
     },[])
 
     function usernameValidation(params) {
@@ -121,11 +121,11 @@ function SignupPage() {
 
     //SUBMIT CALLS
 
-    const personalSubmit = async({signup_first_name, 
+    const personalSubmit = async({signup_first_name,
         signup_last_name, signup_age, signup_gender, signup_ethnicity}) =>{
         try{
             const res = await axios.post(`${serverIp}/update_user`, {
-        
+
                 username: cookies.get('username'),
                 password: cookies.get('password'),
                 firstName: signup_first_name,
@@ -191,7 +191,7 @@ function SignupPage() {
         pageContent =
             <div className = "login">
                 <div className="logo">
-                    <a href="/home">
+                    <a href="/">
                         <img src={logo} height="100vh" width= "auto" minwidth= "0" minheight= "0">
                         </img>
                     </a>
@@ -248,12 +248,16 @@ function SignupPage() {
                 action={jobSubmit}
                 styleName="signupForm">
                     <div className="signupRow">
-                        <MultiAutocomplete id='signup_jobs' className='multiDropdown' promptText='What&apos;s your profession?' options={jobs} maxInputs={3}/>
+                        <div>
+                            <MultiAutocomplete id='signup_jobs' className='multiDropdown' promptText='What&apos;s your profession?' options={jobs} maxInputs={3}/>
+                        </div>
+                        <div>
+                            <MultiAutocomplete id='signup_roles' className='multiDropdown' promptText='What type of role are you looking for?' options={roles} maxInputs={3}/>
+                        </div>
+                        <div>
+                            <button id='signup_jobs_submit' className="nextButton">Next</button>
+                        </div>
                     </div>
-                    <div className="signupRow">
-                        <MultiAutocomplete id='signup_roles' className='multiDropdown' promptText='What type of role are you looking for?' options={roles} maxInputs={3}/>
-                    </div>
-                    <button id='signup_jobs_submit' className="nextButton">Next</button>
                 </Form>
             break;
             case 3:
@@ -273,7 +277,7 @@ function SignupPage() {
         pageContent =
             <div className="login">
                 <div className="logo">
-                    <a href="/home">
+                    <a href="/">
                         <img src={logo} height="100vh" width= "auto" minwidth= "0" minheight= "0">
                         </img>
                     </a>

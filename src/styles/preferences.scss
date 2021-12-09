@@ -39,6 +39,12 @@
     margin-top: 10vh;
 }
 
+.userButtons {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
 .updateButton {
     background: #EC4A4A;
     border: none;

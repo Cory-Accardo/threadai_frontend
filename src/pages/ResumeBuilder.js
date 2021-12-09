@@ -199,7 +199,7 @@ function ResumeBuilder() {
                         </div>
                         <div className= "formSection">
                             Please provide information about your education history, 1 max:
-                            <Input id='education' className='resumeMultiDropdown' promptText="ex. USC"/>
+                            <Input id='education' className='singularResumeInput' promptText="ex. USC" pillClassName='resumeSpacing' options={['USC', 'UCLA', 'Stanford']} maxInputs={1}/>
                         </div>
                     </div>
 

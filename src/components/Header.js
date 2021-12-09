@@ -24,7 +24,7 @@ function Header() {
                   <a className="welcome" href="/user">
                     {cookie.get('firstName') === 'null' ||  cookie.get('firstName') === 'undefined'? cookie.get('username') : cookie.get('firstName')}
                   </a>
-                  <button  style={{marginLeft: '25px', borderRadius:'10px'}} onClick={() =>{
+                  <button className="logout" onClick={() =>{
                     cookie.remove('username');
                     cookie.remove('password');
                     cookie.remove('isAuthenticated');

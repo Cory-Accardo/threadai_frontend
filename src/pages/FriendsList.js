@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { serverIp } from '../constants';
 import axios from 'axios';
 import Header from '../components/Header';
+import '../styles/friends.scss';
 
 function FriendsList() {
     const [users, setUsers] = useState([]);
@@ -22,10 +23,20 @@ function FriendsList() {
     </div>;
 
     return (
-        <div>
+        <>
             <Header/>
-            {friends}
-        </div>
+            <div className="grayspace"></div>
+            <hr/>
+            <div className="grayspace"></div>
+            <div className="friendsBody">
+                <div className="friendsHeader">
+                    CVAI Friends
+                </div>
+                <div className="friendsList">
+                    {friends}
+                </div>
+            </div>
+        </>
     );
 }
 
