@@ -40,13 +40,8 @@ function ResumeBuilder() {
         }
     }, []);
 
-    axios.interceptors.request.use(request => {
-        console.log('Starting Request', JSON.stringify(request, null, 2))
-        return request;
-    });
-
     function submitCreate (params) {
-        axios.post(`${serverIp}/update_resume`,{
+        axios.post(`${serverIp}/update_resume`, {
             username: cookies.get('username'),
             password: cookies.get('password'),
             email: params.email_input ? params.email_input : undefined,
@@ -103,8 +98,32 @@ function ResumeBuilder() {
         project_description1: resume.projDesc1,
         project_description2: resume.projDesc2,
         project_description3: resume.projDesc3,
-        skills_multi_input: [resume.skills1, resume.skills2, resume.skills3],
+        skills_multi_input: shortenArray([resume.skills1, resume.skills2, resume.skills3]),
         exec_summ_input: resume.executiveSummary
+    }
+
+    function shortenArray(array) {
+        const newArray = [];
+        for (const item of array) {
+            if (item) {
+                newArray.push(item);
+            }
+        }
+    }
+
+    async function generateExecutiveSummary() {
+        try {
+            const res = await axios.post(`${serverIp}/generate`, {prompt: resume.email + ', who has education from ' + resume.education + ', is good at the following things:'});
+            const newResume = {};
+            for (const variable in resume) {
+                newResume[variable] = resume[variable];
+            }
+            newResume.executiveSummary = res.data;
+            console.log(newResume);
+            setResume(newResume);
+        } catch {
+            alert('Error updating preferences');
+        }
     }
 
     return (
@@ -302,7 +321,7 @@ function ResumeBuilder() {
                             Use GTP-3 to generate an executive summary about yourself based
                             on the information you provided and edit as you need:
                             <Input id='exec_summ_input' className='executiveSummary' promptText='Write your executive summary here...'/>
-                            <button id='gtp_button' className="gtpButton" onClick={console.log("generate summary")}>
+                            <button id='gtp_button' className="gtpButton" isFormSubmitButton='no' onClick={generateExecutiveSummary}>
                                 Generate executive summary with GTP-3
                             </button>
                         </div>
