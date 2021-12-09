@@ -111,6 +111,7 @@ function ResumeBuilder() {
                 newArray.push(item);
             }
         }
+        return newArray;
     }
 
     async function generateExecutiveSummary() {
@@ -322,11 +323,11 @@ function ResumeBuilder() {
                             6. Executive Summary
                         </div>
                         <div className="formSection">
-                            Use GTP-3 to generate an executive summary about yourself based
+                            Use GPT-3 to generate an executive summary about yourself based
                             on the information you provided and edit as you need:
                             <Input id='exec_summ_input' className='executiveSummary' promptText='Write your executive summary here...'/>
                             <button id='gtp_button' className="gtpButton" isFormSubmitButton='no' onClick={generateExecutiveSummary}>
-                                Generate executive summary with GTP-3
+                                Generate executive summary with GPT-3
                             </button>
                         </div>
                     </div>
