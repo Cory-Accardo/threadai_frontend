@@ -44,7 +44,7 @@ function ResumeBuilder() {
         axios.post(`${serverIp}/update_resume`, {
             username: cookies.get('username'),
             password: cookies.get('password'),
-            email: params.email_input ? params.email_input : undefined,
+            email: cookies.get('username'),
             address: params.address_input ? params.address_input : undefined,
             phone: params.phone_input ? params.phone_input : undefined,
             website: params.website_input ? params.website_input : undefined,
@@ -110,16 +110,16 @@ function ResumeBuilder() {
             }
         }
     }
-
+    
     async function generateExecutiveSummary() {
         try {
-            const res = await axios.post(`${serverIp}/generate`, {prompt: resume.email + ', who has education from ' + resume.education + ', is good at the following things:'});
+            const res = await axios.post(`${serverIp}/generate`, {prompt: 'Our user, who has education from ' + resume.education1 + ' and has worked as a ' + resume.expRole1 + ', is good at :'});
             const newResume = {};
             for (const variable in resume) {
                 newResume[variable] = resume[variable];
             }
-            newResume.executiveSummary = res.data;
-            console.log(newResume);
+            newResume.executiveSummary = 'I am good at' + res.data;
+            console.log(res);
             setResume(newResume);
         } catch {
             alert('Error updating preferences');
