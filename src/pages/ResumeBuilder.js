@@ -332,7 +332,7 @@ function ResumeBuilder() {
                     </div>
                     <div className= "sectionContainer" id="clickSubmit">
                         <button id='submit_button' className= "createButton">
-                            Create!
+                            Save my Resume
                         </button>
                     </div>
                 </div>
