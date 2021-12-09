@@ -18,13 +18,6 @@ function ResumeBuilder() {
 
     const [resume, setResume] = useState({});
 
-    function validate(params) {
-        if (params.test_dropdown === '' || !params.test_multi_autocomplete?.length) {
-            return false;
-        }
-        return true;
-    }
-
     useEffect(async () => {
         try{
             const res = await axios.post(`${serverIp}/get_resume`, {
@@ -39,6 +32,15 @@ function ResumeBuilder() {
         catch(e){
         }
     }, []);
+
+    if (!cookies.get('username') || !cookies.get('password')) {
+        return (
+            <div>
+                <Header/>
+                <p>You must be logged in to create a resume.</p>
+            </div>
+        );
+    }
 
     function submitCreate (params) {
         axios.post(`${serverIp}/update_resume`, {
@@ -110,7 +112,7 @@ function ResumeBuilder() {
             }
         }
     }
-    
+
     async function generateExecutiveSummary() {
         try {
             const res = await axios.post(`${serverIp}/generate`, {prompt: 'Our user, who has education from ' + resume.education1 + ' and has worked as a ' + resume.expRole1 + ', is good at :'});
@@ -118,11 +120,13 @@ function ResumeBuilder() {
             for (const variable in resume) {
                 newResume[variable] = resume[variable];
             }
-            newResume.executiveSummary = 'I am good at' + res.data;
-            console.log(res);
-            setResume(newResume);
+            if (res.status === 200) {
+                newResume.executiveSummary = 'I am good at' + res.data;
+                console.log(res);
+                setResume(newResume);
+            }
         } catch {
-            alert('Error updating preferences');
+            alert('Error generating executive summary.');
         }
     }
 

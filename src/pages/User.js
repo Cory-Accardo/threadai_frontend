@@ -29,7 +29,20 @@ function User() {
         } catch {
 
         }
-    }, [])
+    }, []);
+
+    if (!cookies.get('username') || !cookies.get('password')) {
+        return (
+            <div>
+                <Header/>
+                <div className="resumeButtonSpacing">
+                    <a href="/friends" className="viewResume">
+                        View the list of available friends
+                    </a>
+                </div>
+            </div>
+        );
+    }
 
     function validation(params) {
         return true;
