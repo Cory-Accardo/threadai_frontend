@@ -110,13 +110,7 @@ function ResumeBuilder() {
             }
         }
     }
-
-    axios.interceptors.request.use(request => {
-  console.log('Starting Request', JSON.stringify(request, null, 2))
-  return request
-})
-
-
+    
     async function generateExecutiveSummary() {
         try {
             const res = await axios.post(`${serverIp}/generate`, {prompt: 'Our user, who has education from ' + resume.education1 + ' and has worked as a ' + resume.expRole1 + ', is good at :'});
