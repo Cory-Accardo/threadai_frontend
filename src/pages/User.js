@@ -74,11 +74,27 @@ function User() {
             const res = await axios.post(`${serverIp}/update_user`, {
                 username: cookies.get('username'),
                 password: cookies.get('password'),
-                homeCity: params.preferences_locations?.[0] ? params.preferences_locations?.[0] : undefined
+                location1: params.preferences_locations?.[0] ? params.preferences_locations?.[0] : undefined,
+                job1: params.preferences_industries?.[0] ? params.preferences_industries?.[0] : undefined,
+                job2: params.preferences_industries?.[1] ? params.preferences_industries?.[1] : undefined,
+                job3: params.preferences_industries?.[2] ? params.preferences_industries?.[2] : undefined,
+                role1: params.preferences_roles?.[0] ? params.preferences_roles?.[0] : undefined,
+                role2: params.preferences_roles?.[1] ? params.preferences_roles?.[1] : undefined,
+                role3: params.preferences_roles?.[2] ? params.preferences_roles?.[2] : undefined
             })
         } catch {
             alert('Error updating preferences');
         }
+    }
+
+    function shortenArray(array) {
+        const newArray = [];
+        for (const item of array) {
+            if (item) {
+                newArray.push(item);
+            }
+        }
+        return newArray;
     }
 
     return (
@@ -106,7 +122,7 @@ function User() {
                             key={JSON.stringify(user)}
                             validation={validation}
                             action={submitPersonal}
-                            initialState={{preferences_first_name: user.firstName, preferences_last_name: user.lastName, preferences_age: user.age, preferences_gender: user.gender, preferences_ethnicity: user.ethnicity, preferences_locations: [user.homeCity]}}
+                            initialState={{preferences_first_name: user.firstName, preferences_last_name: user.lastName, preferences_age: user.age, preferences_gender: user.gender, preferences_ethnicity: user.ethnicity}}
                             styleName='preferencesFormCol1'>
                             <div className="column1">
                                 First name: <Input id='preferences_first_name' className='preferencesInput' promptText='First name'/>
@@ -131,12 +147,14 @@ function User() {
                     <div>
                         <Form
                             id='preferences_form'
+                            key={JSON.stringify(user)}
                             action={submitResume}
                             validation={validation}
                             method='POST'
+                            initialState={{preferences_locations: shortenArray([user.location1]), preferences_industries: shortenArray([user.job1, user.job2, user.job3]), preferences_roles: shortenArray([user.role1, user.role2, user.role3])}}
                             styleName='preferencesFormCol2'>
                             <div className="column2">
-                                Geographic Locations:<MultiAutocomplete id='preferences_locations' className='userMultiDropdown' promptText='Your places of work or residence' options={locations} maxInputs={3}/>
+                                Geographic Locations:<MultiAutocomplete id='preferences_locations' className='userMultiDropdown' promptText='Your places of work or residence' options={locations} maxInputs={1}/>
                                 Industries: <MultiAutocomplete id='preferences_industries' className='userMultiDropdown' promptText='Industries you would like to work in' options={jobs} maxInputs={3}/>
                                 Roles: <MultiAutocomplete id='preferences_roles' className='userMultiDropdown' promptText='Roles you would like to have' options={roles} maxInputs={3}/>
                                 <div className="grayspace"></div>

@@ -111,6 +111,7 @@ function ResumeBuilder() {
                 newArray.push(item);
             }
         }
+        return newArray;
     }
 
     async function generateExecutiveSummary() {

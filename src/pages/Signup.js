@@ -96,8 +96,6 @@ function SignupPage() {
         return false
     }
 
-
-
     const cookies = new Cookies();
 
     let pageContent;
@@ -152,12 +150,15 @@ function SignupPage() {
             email: cookies.get('username')
         })
         try{
-            const res = await axios.post(`${serverIp}/create_resume`, {
+            const res = await axios.post(`${serverIp}/update_user`, {
                 username: cookies.get('username'),
                 password: cookies.get('password'),
-                skills: signup_jobs,
-                experiences: signup_roles,
-                email: cookies.get('username')
+                job1: signup_jobs?.[0] ? signup_jobs?.[0] : undefined,
+                job2: signup_jobs?.[1] ? signup_jobs?.[1] : undefined,
+                job3: signup_jobs?.[2] ? signup_jobs?.[2] : undefined,
+                role1: signup_roles?.[0] ? signup_roles?.[0] : undefined,
+                role2: signup_roles?.[1] ? signup_roles?.[1] : undefined,
+                role3: signup_roles?.[2] ? signup_roles?.[2] : undefined
             });
             if(res.status == 200){
                 setCurrentPage(3);
@@ -173,7 +174,7 @@ function SignupPage() {
             const res = await axios.post(`${serverIp}/update_user`, {
                 username: cookies.get('username'),
                 password: cookies.get('password'),
-                homeCity: signup_location
+                location1: signup_location,
             });
             if(res.status == 200){
                 navigate('/');
@@ -268,7 +269,7 @@ function SignupPage() {
                 action={locationSubmit}
                 styleName="signupForm">
                 <div className="signupRow">
-                    <DropdownInput id='signup_location' className='multiDropdown' promptText='What is your home city' options={locations}/>
+                    <DropdownInput id='signup_location' className='signupDropdownInput' promptText='What is your home city' options={locations}/>
                 </div>
                 <button id='signup_location_submit' className="nextButton">Sign up</button>
                 </Form>
