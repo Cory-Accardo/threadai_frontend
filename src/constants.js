@@ -1,1 +1,1 @@
-export const serverIp = '3.19.229.237'
+export const serverIp = 'http://3.19.229.237'
