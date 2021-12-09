@@ -1,1 +1,1 @@
-export const serverIp = 'http://localhost:80'
+export const serverIp = '3.19.229.237'
