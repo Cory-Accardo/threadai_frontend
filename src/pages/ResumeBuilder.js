@@ -174,7 +174,7 @@ function ResumeBuilder() {
                         </div>
                         <div className= "formSection">
                             Please provide information about your education history, 1 max:
-                            <MultiAutocomplete id='education' className='resumeMultiDropdown' promptText="ex. USC" pillClassName='resumeSpacing' options={['USC', 'UCLA', 'Stanford']} maxInputs={1}/>
+                            <Input id='education' className='singularResumeInput' promptText="ex. USC" pillClassName='resumeSpacing' options={['USC', 'UCLA', 'Stanford']} maxInputs={1}/>
                         </div>
                     </div>
 
@@ -289,8 +289,8 @@ function ResumeBuilder() {
                             5. Skills
                         </div>
                         <div className="formSection">
-                            Provide up to 10 skills to list on your resume:
-                            <MultiInput id='skills_multi_input' promptText='Type in your skills' className='singularResumeInput' pillClassName='test_class_pill' maxInputs={10}/>
+                            Provide up to 3 skills to list on your resume:
+                            <MultiInput id='skills_multi_input' promptText='Type in your skills' className='singularResumeInput' pillClassName='test_class_pill' maxInputs={3}/>
                         </div>
                     </div>
 

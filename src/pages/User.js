@@ -69,15 +69,17 @@ function User() {
             <div className="grayspace"></div>
             <hr/>
             <div className="userBody">
-                <div className="resumeButtonSpacing">
-                    <a href="/create" className="viewResume">
-                        View Your CVAI Resume
-                    </a>
-                </div>
-                <div className="resumeButtonSpacing">
-                    <a href="/friends" className="viewResume">
-                        View the list of available friends
-                    </a>
+                <div className="userButtons">
+                    <div className="resumeButtonSpacing">
+                        <a href="/create" className="viewResume">
+                            View Your CVAI Resume
+                        </a>
+                    </div>
+                    <div className="resumeButtonSpacing">
+                        <a href="/friends" className="viewResume">
+                            View the list of available friends
+                        </a>
+                    </div>
                 </div>
                 <div className="preferences">
                     <div>
